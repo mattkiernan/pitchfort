@@ -1,0 +1,13 @@
+<h2>Add new Journalist</h2>
+
+<%= form_for @journalist do |form| %>
+  <%= form.text_field :first_name, :placeholder => "First name" %>
+  <%= form.text_field :last_name, :placeholder => "Last name" %>
+  <%= form.text_field :email, :placeholder => "Email" %>
+  <%= form.text_field :phone, :placeholder => "Phone" %>
+  <%= form.submit %>
+<% end %>
+
+<ul>
+  <%= render @journalists %>
+</ul>

@@ -1,7 +1,8 @@
 class CreateJournalists < ActiveRecord::Migration
   def change
     create_table :journalists do |t|
-      t.string :name, null: false
+      t.string :first_name, null: false
+      t.string :last_name
       t.string :phone
       t.string :email, null: false
 
