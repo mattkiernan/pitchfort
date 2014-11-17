@@ -1,0 +1,17 @@
+<%= form_for [announcement.client, announcement] do |form| %>
+  <div>
+    <%= form.text_field :name, :placeholder => "Announcement name" %>
+  </div>
+  <div>
+    <%= form.text_field :description, :placeholder => "Description" %>
+  </div>
+  <div>
+    <%= form.date_select :announcement_date %>
+  </div>
+  <div>
+    <%= form.time_select :announcement_time, ampm: true %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
