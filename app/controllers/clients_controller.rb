@@ -16,7 +16,17 @@ class ClientsController < ApplicationController
     end
   end
 
+  def show
+    @client = load_client_from_url
+  end
+
+  private
+
   def client_params
     params.require(:client).permit(:name)
+  end
+
+  def load_client_from_url
+    Client.find(params[:id])
   end
 end
