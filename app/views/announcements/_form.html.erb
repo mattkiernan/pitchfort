@@ -6,10 +6,7 @@
     <%= form.text_field :description, :placeholder => "Description" %>
   </div>
   <div>
-    <%= form.date_select :announcement_date %>
-  </div>
-  <div>
-    <%= form.time_select :announcement_time, ampm: true %>
+    <%= form.datetime_select :datetime, ampm: true, seconds: false %>
   </div>
   <div>
     <%= form.submit %>

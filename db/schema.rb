@@ -17,13 +17,12 @@ ActiveRecord::Schema.define(version: 20141117160852) do
   enable_extension "plpgsql"
 
   create_table "announcements", force: true do |t|
-    t.string   "name",              null: false
+    t.string   "name",        null: false
     t.string   "description"
-    t.date     "announcement_date"
-    t.time     "announcement_time"
-    t.integer  "client_id",         null: false
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.date     "datetime"
+    t.integer  "client_id",   null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "announcements", ["client_id"], name: "index_announcements_on_client_id", using: :btree

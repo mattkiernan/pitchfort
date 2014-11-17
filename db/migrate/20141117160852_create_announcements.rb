@@ -3,8 +3,7 @@ class CreateAnnouncements < ActiveRecord::Migration
     create_table :announcements do |t|
       t.string :name, null: false
       t.string :description
-      t.date :announcement_date
-      t.time :announcement_time
+      t.date :datetime
       t.integer :client_id, null: false
 
       t.timestamps null: false
