@@ -29,7 +29,7 @@ class JournalistsController < ApplicationController
         :email,
         :phone,
         topic_ids: [],
-        publication_ids:[]
+        publication_ids: []
     )
   end
 end
