@@ -5,7 +5,7 @@ class JournalistsController < ApplicationController
   end
 
   def create
-    @journalist = Journalist.new(journalist_params)
+    @journalist=Journalist.new(journalist_params)
     if @journalist.save
       redirect_to @journalist
     end
@@ -22,6 +22,7 @@ class JournalistsController < ApplicationController
   end
 
   def journalist_params
-    params.require(:journalist).permit(:first_name, :last_name, :email, :phone, topic_ids:[])
+    params.require(:journalist).
+      permit(:first_name, :last_name, :email, :phone, topic_ids:[])
   end
 end

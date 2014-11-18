@@ -55,19 +55,6 @@ ActiveRecord::Schema.define(version: 20141118143235) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "pitches", force: true do |t|
-    t.string   "subject",         null: false
-    t.text     "body",            null: false
-    t.integer  "journalist_id",   null: false
-    t.integer  "announcement_id", null: false
-    t.datetime "date",            null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "pitches", ["announcement_id"], name: "index_pitches_on_announcement_id", using: :btree
-  add_index "pitches", ["journalist_id"], name: "index_pitches_on_journalist_id", using: :btree
-
   create_table "topics", force: true do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
