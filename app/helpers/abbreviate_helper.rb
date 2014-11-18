@@ -1,24 +1,19 @@
 module AbbreviateHelper
-  def abbreviate(attributes)
-    check_if_no(attributes)
-  end
-
-  def check_if_no(attributes)
-    if attributes == []
+  def abbreviate(list, attribute)
+    if list.empty?
       "None"
     else
-      display(attributes)
+      abbreviated_with_count(list, attribute)
     end
   end
 
-  def display(attributes)
-    first_attribute = attributes.first.name
-    remaining_attributes = attributes.count - 1
-    if remaining_attributes > 0
-      "#{first_attribute} & #{remaining_attributes} " +
-        "other".pluralize(remaining_attributes)
+  def abbreviated_with_count(list, attribute)
+    first_value = list.first.send attribute
+    remaining_count = list.count - 1
+    if remaining_count > 0
+      "#{first_value} & #{remaining_count} #{"other".pluralize(remaining_count)}"
     else
-      "#{first_attribute}"
+      first_value
     end
   end
 end

@@ -1,5 +1,5 @@
 <li><%= journalist.full_name %></li>
 <ul>
-  <li>Publications: <%= abbreviate(journalist.publications) %></li>
-  <li>Topics covered: <%= abbreviate(journalist.topics) %></li>
+  <li>Publications: <%= abbreviate(journalist.publications, :name) %></li>
+  <li>Topics covered: <%= abbreviate(journalist.topics, :name) %></li>
 </ul>
