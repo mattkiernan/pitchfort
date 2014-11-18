@@ -1,8 +1,19 @@
 <%= form_for @journalist do |form| %>
+  <div>
   <%= form.text_field :first_name, :placeholder => "First name" %>
   <%= form.text_field :last_name, :placeholder => "Last name" %>
   <%= form.text_field :email, :placeholder => "Email" %>
   <%= form.text_field :phone, :placeholder => "Phone" %>
+</div>
+<div>
+  <h4>Select coverage topics</h4>
   <%= form.collection_check_boxes(:topic_ids, Topic.all, :id, :name) %>
-  <%= form.submit %>
+</div>
+<div>
+  <h4>Select journalist's publications</h4>
+  <%= form.collection_check_boxes(:publication_ids, Publication.all, :id, :name) %>
+</div>
+<div>
+<%= form.submit %>
+</div>
 <% end %>
