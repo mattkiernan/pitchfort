@@ -23,6 +23,13 @@ class JournalistsController < ApplicationController
 
   def journalist_params
     params.require(:journalist).
-      permit(:first_name, :last_name, :email, :phone, topic_ids: [])
+      permit(
+        :first_name,
+        :last_name,
+        :email,
+        :phone,
+        topic_ids: [],
+        publication_ids:[]
+    )
   end
 end
