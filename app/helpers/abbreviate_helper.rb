@@ -11,8 +11,8 @@ module AbbreviateHelper
     first_value = list.first.send attribute
     remaining_count = list.count - 1
     if remaining_count > 0
-      "#{first_value} & #{remaining_count}
-      #{"other".pluralize(remaining_count)}"
+      pluralized_others = "other".pluralize(remaining_count)
+      "#{first_value} & #{remaining_count} #{pluralized_others}"
     else
       first_value
     end
