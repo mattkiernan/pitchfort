@@ -10,45 +10,30 @@ class Journalist < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
-  def list_abbreviated_publications
-    check_if_no_publications || display_publication_list
+  def abbreviate_publications
+    check_if_no(publications)
   end
 
-  def check_if_no_publications
-    if publications == []
-      "No publications"
-    end
+  def abbreviate_topics
+    check_if_no(topics)
   end
 
-  def display_publication_list
-    first_publication = publications.first.name
-    remaining_publications = publications.count - 1
-    if remaining_publications > 0
-      "#{first_publication} & #{remaining_publications} other " +
-        "publication".pluralize(remaining_publications)
+  def check_if_no(attributes)
+    if attributes == []
+      "None"
     else
-      "#{first_publication}"
+      display(attributes)
     end
   end
 
-  def list_abbreviated_topics
-    check_if_no_topics || display_topic_list
-  end
-
-  def check_if_no_topics
-    if topics == []
-      "No topics"
-    end
-  end
-
-  def display_topic_list
-    first_topic = topics.first.name
-    remaining_topics = topics.count
-    if remaining_topics > 0
-      "Covers #{first_topic} & #{remaining_topics} other " +
-        "topic".pluralize(remaining_topics)
+  def display(attributes)
+    first_attribute = attributes.first.name
+    remaining_attributes = attributes.count - 1
+    if remaining_attributes > 0
+      "#{first_attribute} & #{remaining_attributes} " +
+        "other".pluralize(remaining_attributes)
     else
-      "Covers #{first_topic}"
+      "#{first_attribute}"
     end
   end
 end
