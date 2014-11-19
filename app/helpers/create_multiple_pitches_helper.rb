@@ -1,5 +1,5 @@
 module CreateMultiplePitchesHelper
-  def create_multiple_pitches(parsed_params)
+  def create_multiple_pitches(batch_pitch_params)
     @journalist_ids.each do |id|
       Pitch.create(
         announcement: @announcement,
