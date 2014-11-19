@@ -9,11 +9,4 @@ module CreateMultiplePitchesHelper
       )
     end
   end
-
-  def parsed_params
-    @subject = params[:subject]
-    @body = params[:body]
-    @journalist_ids = params[:journalists]["journalist_ids"].reject!(&:blank?)
-    @announcement = load_announcement_from_url
-  end
 end
