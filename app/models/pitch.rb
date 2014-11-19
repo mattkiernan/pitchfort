@@ -1,7 +1,7 @@
 class Pitch < ActiveRecord::Base
-  STATUES = ["Not sent", "Sent", "Declined", "Accepted"]
+  STATUSES = ["Not sent", "Sent", "Declined", "Accepted"]
 
-  validates :inclusion_of, :status, in: STATUSES
+  validates_inclusion_of :status, in: STATUSES
   validates :subject, presence: true
   validates :body, presence: true
   validates :status, presence: true
