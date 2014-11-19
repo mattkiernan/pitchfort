@@ -1,0 +1,7 @@
+<h1>Hello</h1>
+<%= form_tag :announcement_batch_pitches, method: :post do %>
+  <%= text_field_tag :subject, nil, placeholder: "Subject" %>
+  <%= text_field_tag :body, nil, placeholder: "Body" %>
+  <%= collection_check_boxes(:journalists, :journalist_ids, Journalist.all, :id, :full_name) %>
+  <%= submit_tag %>
+<% end %>
