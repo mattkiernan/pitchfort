@@ -14,6 +14,6 @@ gem 'rails_12factor'
 gem 'monban-generators'
 group :development do
     gem "better_errors"
+    gem "binding_of_caller"
+    gem 'pry'
 end
-gem "binding_of_caller"
-gem 'pry'

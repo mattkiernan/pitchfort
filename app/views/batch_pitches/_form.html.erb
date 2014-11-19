@@ -1,5 +1,0 @@
-<h1>Hello</h1>
-<%= form_for 'batch_pitch/create' do |form| %>
-  <%= form.text_field "Subject" %>
-  <%= form.collection_check_boxes(:publication_ids, Publication.all, :id, :name) %>
-<% end %>

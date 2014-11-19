@@ -2,20 +2,23 @@ class BatchPitchesController < ApplicationController
   include CreateMultiplePitchesHelper
 
   def new
+    @announcement = load_announcement_from_url
+    @pitch = @announcement.pitches.new
   end
 
   def create
-    create_multiple_pitches(batch_pitch_params)
-    redirect_to announcement_path(@announcement)
+    @announcement = load_announcement_from_url
+    @journalists = params[:pitch][:journalist_ids].reject!(&:blank?)
+    @journalists.each do |id|
+      @announcement.pitches.create(pitch_params.merge(journalist_id: id))
+    end
+    redirect_to @announcement
   end
 
   private
 
-  def batch_pitch_params
-    @subject = params[:subject]
-    @body = params[:body]
-    @journalist_ids = params[:journalists]["journalist_ids"].reject!(&:blank?)
-    @announcement = load_announcement_from_url
+  def pitch_params
+    params.require(:pitch).permit(:body, :subject, :title)
   end
 
   def load_announcement_from_url
