@@ -14,6 +14,10 @@ class AnnouncementsController < ApplicationController
     end
   end
 
+  def show
+    @announcement = load_announcement_from_url
+  end
+
   private
 
   def load_client_from_url
@@ -22,5 +26,9 @@ class AnnouncementsController < ApplicationController
 
   def announcement_params
     params.require(:announcement).permit(:name, :description, :datetime)
+  end
+
+  def load_announcement_from_url
+    Announcement.find(params[:id])
   end
 end

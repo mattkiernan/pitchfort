@@ -1,1 +1,5 @@
-<li><%= announcement.name %> - <%= announcement.description %></li>
+<li>
+  <%= link_to announcement.name,
+    client_announcement_path(announcement.client, announcement) %> -
+    <%= announcement.description %>
+</li>
