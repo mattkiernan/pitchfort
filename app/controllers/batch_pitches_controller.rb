@@ -1,6 +1,4 @@
 class BatchPitchesController < ApplicationController
-  include CreateMultiplePitchesHelper
-
   def new
     @announcement = load_announcement_from_url
     @pitch = @announcement.pitches.new
