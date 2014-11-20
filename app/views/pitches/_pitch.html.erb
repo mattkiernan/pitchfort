@@ -1,7 +1,7 @@
 <tr data-announcement_id="<%= announcement.id %>", data-pitch_id="<%= pitch.id %>">
   <td><%= pitch.subject %></td>
-  <td><%= pitch.journalist.full_name %></td>
   <td><%= pitch.datetime %></td>
+  <td><%= pitch.journalist.full_name %></td>
   <td><%= abbreviate(pitch.publications, :name) %></td>
   <td>
     <%= form_for [announcement, pitch] do |form| %>

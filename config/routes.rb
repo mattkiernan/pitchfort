@@ -12,4 +12,6 @@ Rails.application.routes.draw do
     resources :pitches, only: [:new, :create, :update]
     resources :batch_pitches, only: [:new, :create, :index]
   end
+
+  resources :pitch_topics, only: [:create]
 end

@@ -2,12 +2,17 @@ class JournalistsController < ApplicationController
   def index
     @journalists = Journalist.all
     @journalist = Journalist.new
+    @selected_journalists = load_journalist_topics
+    respond_to do |format|
+      format.json { render json: @selected_journalists }
+      format.html
+    end
   end
 
   def create
     @journalist = Journalist.new(journalist_params)
     if @journalist.save
-      redirect_to @journalist
+      redirect_to journalists_path
     end
   end
 
@@ -31,5 +36,11 @@ class JournalistsController < ApplicationController
         topic_ids: [],
         publication_ids: []
     )
+  end
+
+  def load_journalist_topics
+    topic_ids = params[:topic_ids]
+    Journalist.joins(:coverage_topics).
+      where(coverage_topics: { topic_id: topic_ids }).uniq
   end
 end
