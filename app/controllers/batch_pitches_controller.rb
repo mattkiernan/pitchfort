@@ -2,12 +2,14 @@ class BatchPitchesController < ApplicationController
   def new
     @announcement = load_announcement_from_url
     @pitch = @announcement.pitches.new
+    @pitch_topic = PitchTopic.new
   end
 
   def create
     announcement = load_announcement_from_url
     journalists = params[:pitch][:journalist_id].reject!(&:blank?)
     create_pitch_for_each(announcement, journalists)
+    create_pitch_topics(topics, pitch)
     redirect_to client_announcement_path(announcement.client, announcement)
   end
 
@@ -15,7 +17,8 @@ class BatchPitchesController < ApplicationController
 
   def create_pitch_for_each(announcement, journalists)
     journalists.each do |id|
-      announcement.pitches.create(pitch_params.merge(journalist_id: id))
+      pitch = announcement.pitches.create(pitch_params.merge(journalist_id: id))
+      create_pitch_topics(pitch)
     end
   end
 

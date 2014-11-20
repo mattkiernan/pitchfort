@@ -1,6 +1,9 @@
 <%= form_for @pitch, url: announcement_batch_pitches_path do |form| %>
   <%= form.text_field :subject, :placeholder => "Subject" %>
   <%= form.text_field :body, :placeholder=> "Body" %>
+  <%= form.fields_for @pitch_topic do |topic_fields| %>
+    <%= render "pitch_topics/form", fields: topic_fields %>
+  <% end %>
   <%= form.collection_check_boxes(:journalist_id, Journalist.all, :id, :full_name) %>
   <%= form.submit %>
 <% end %>

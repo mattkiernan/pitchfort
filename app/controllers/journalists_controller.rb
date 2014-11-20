@@ -7,7 +7,7 @@ class JournalistsController < ApplicationController
   def create
     @journalist = Journalist.new(journalist_params)
     if @journalist.save
-      redirect_to @journalist
+      redirect_to journalists_path
     end
   end
 

@@ -7,9 +7,11 @@ class Pitch < ActiveRecord::Base
   validates :status, presence: true
   validates :announcement_id, presence: true
 
-  belongs_to :announcement
+  has_many :pitch_topics
+  has_many :pitches, through: :pitch_topic
   has_many :pitch_targets
   belongs_to :journalist
+  belongs_to :announcement
 
   def publications
     journalist = Journalist.find(journalist_id)
