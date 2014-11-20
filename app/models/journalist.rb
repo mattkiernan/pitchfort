@@ -5,8 +5,7 @@ class Journalist < ActiveRecord::Base
   has_many :topics, through: :coverage_topics
   has_many :publication_contributions
   has_many :publications, through: :publication_contributions
-  has_many :pitch_targets
-  has_many :pitches, through: :pitch_targets
+  has_many :pitches
 
   def full_name
     "#{first_name} #{last_name}"

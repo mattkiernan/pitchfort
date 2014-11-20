@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :journalists, only: [:index, :new, :create, :show]
 
   resources :announcements, only: [] do
-    resources :pitches, only: [:new, :create]
+    resources :pitches, only: [:new, :create, :update]
     resources :batch_pitches, only: [:new, :create, :index]
   end
 end

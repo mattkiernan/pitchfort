@@ -6,7 +6,7 @@ class BatchPitchesController < ApplicationController
 
   def create
     announcement = load_announcement_from_url
-    journalists = params[:pitch][:journalist_ids].reject!(&:blank?)
+    journalists = params[:pitch][:journalist_id].reject!(&:blank?)
     create_pitch_for_each(announcement, journalists)
     redirect_to client_announcement_path(announcement.client, announcement)
   end

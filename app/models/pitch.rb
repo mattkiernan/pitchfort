@@ -9,5 +9,10 @@ class Pitch < ActiveRecord::Base
 
   belongs_to :announcement
   has_many :pitch_targets
-  has_many :journalists, through: :pitch_targets
+  belongs_to :journalist
+
+  def publications
+    journalist = Journalist.find(journalist_id)
+    journalist.publications
+  end
 end
