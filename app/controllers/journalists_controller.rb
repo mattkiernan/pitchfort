@@ -7,7 +7,7 @@ class JournalistsController < ApplicationController
     @selected_journalists = Journalist.where(id: coverage_topics)
     respond_to do |format|
       format.json { render json: @selected_journalists}
-      format.html { render html: @selected_journalists}
+      format.html {}
     end
   end
 
