@@ -6,7 +6,7 @@ class JournalistsController < ApplicationController
     coverage_topics = CoverageTopic.where(topic_id: topic_ids)
     @selected_journalists = Journalist.where(id: coverage_topics)
     respond_to do |format|
-      format.json { render json: @selected_journalists}
+      format.json { render json: @selected_journalists }
       format.html {}
     end
   end
@@ -43,7 +43,8 @@ class JournalistsController < ApplicationController
   def list_journalist_topics
     journalist_list = {}
     @journalists = Journalist.all
-    @journalists.map{|journalist| journalist_list[journalist.id] = journalist.topic_ids}
+    @journalists.map { |journalist|
+      journalist_list[journalist.id] = journalist.topic_ids }
     journalist_list
   end
 end
