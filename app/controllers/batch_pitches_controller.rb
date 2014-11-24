@@ -9,7 +9,8 @@ class BatchPitchesController < ApplicationController
     announcement = load_announcement_from_url
     journalists = params[:pitch][:journalist_id]
     topics = params[:pitch][:pitch_topic][:topic_id].reject!(&:blank?)
-    pitch_creator = PitchCreator.new(announcement, journalists, topics, pitch_params)
+    pitch_creator = PitchCreator.
+      new(announcement, journalists, topics, pitch_params)
     pitch_creator.create_pitches
 
     if pitch_creator.successful?
