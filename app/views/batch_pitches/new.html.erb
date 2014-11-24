@@ -6,12 +6,6 @@
     <%= render "pitch_topics/form", fields: topic_fields %>
   <% end %>
 </div>
-<div>
-<%= form.collection_check_boxes(:journalist_id, Journalist.all, :id, :full_name) do |box| %>
-  <%= box.label(class: "unselected-journalist") %>
-  <%= box.check_box(class: "unselected-journalist") %>
-<% end %>
-</div>
+  <div class="journalist-list"></div>
   <%= form.submit %>
 <% end %>
-<div class="journalist-list"></div>
