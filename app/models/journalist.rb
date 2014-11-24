@@ -10,4 +10,12 @@ class Journalist < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def topic_ids
+    ids = []
+    topics.each do |topic|
+      ids << topic.id
+    end
+    ids
+  end
 end
