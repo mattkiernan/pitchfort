@@ -43,8 +43,9 @@ class JournalistsController < ApplicationController
   def list_journalist_topics
     journalist_list = {}
     @journalists = Journalist.all
-    @journalists.map { |journalist|
-      journalist_list[journalist.id] = journalist.topic_ids }
+    @journalists.map do |journalist|
+      journalist_list[journalist.id] = journalist.topic_ids
+    end
     journalist_list
   end
 end

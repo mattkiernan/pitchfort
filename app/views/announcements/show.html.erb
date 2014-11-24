@@ -3,5 +3,5 @@
 <%= link_to "Add new pitch", new_announcement_batch_pitch_path(@announcement) %>
 
 <table>
-  <%= render @pitches, announcement: @announcement %>
+  <%= render @pitches.reverse, announcement: @announcement %>
 </table>
