@@ -25,14 +25,17 @@ $(function(){
     $(".journalist-list").children().remove();
     $(".selected-journalist").attr("class", "unselected-journalist")
       $.each(selectedJournalists, function(index, value){
-        journalistId = value["id"]
-        journalistName = value["first_name"] + " " + value["last_name"]
+        journalistId = value["id"],
+        journalistName = value["first_name"] + " " + value["last_name"],
         journalistInput(journalistId, journalistName);
       });
   };
 
   var journalistInput = function(journalistId, journalistName){
     $(".journalist-list").append(
-            "<input id='pitch_journalist_id_" + journalistId + "' name='pitch[journalist_id][]' type='checkbox' value='" + journalistId + "'><label for='" + "pitch_journalist_id_" + journalistId + "'>" + journalistName + "</label><br>")
-  };
+            "<input id='pitch_journalist_id_" + journalistId +
+            "' name='pitch[journalist_id][]' type='checkbox' value='" +
+            journalistId + "'><label for='" + "pitch_journalist_id_" +
+            journalistId + "'>" + journalistName + "</label><br>"
+        )};
 });
