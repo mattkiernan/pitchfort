@@ -32,10 +32,10 @@ $(function(){
 
   var appendToForm = function(journalistId, journalistName){
     var checkbox = $("<input />", {
-        id: "pitch_journalist_id_" + journalistId,
-        name: "pitch[journalist_id][]",
-        type: "checkbox",
-        value: journalistId
+      id: "pitch_journalist_id_" + journalistId,
+      name: "pitch[journalist_id][]",
+      type: "checkbox",
+      value: journalistId
     });
 
     var label = $("<label>", {

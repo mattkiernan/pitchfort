@@ -36,8 +36,4 @@ class PitchCreator
       end
     end
   end
-
-  def pitch_params
-    params.require(:pitch).permit(:body, :subject, :title)
-  end
 end

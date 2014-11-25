@@ -41,6 +41,6 @@ class JournalistsController < ApplicationController
   def load_journalist_topics
     topic_ids = params[:topic_ids]
     Journalist.joins(:coverage_topics).
-      where(coverage_topics: { topic_id: topic_ids })
+      where(coverage_topics: { topic_id: topic_ids }).uniq
   end
 end
