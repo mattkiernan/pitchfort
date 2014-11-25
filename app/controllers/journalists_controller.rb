@@ -2,12 +2,10 @@ class JournalistsController < ApplicationController
   def index
     @journalists = Journalist.all
     @journalist = Journalist.new
-    topic_ids = params[:topic_ids]
-    coverage_topics = CoverageTopic.where(topic_id: topic_ids)
-    @selected_journalists = Journalist.where(id: coverage_topics)
+    @selected_journalists = load_journalist_topics
     respond_to do |format|
       format.json { render json: @selected_journalists }
-      format.html {}
+      format.html
     end
   end
 
@@ -40,12 +38,9 @@ class JournalistsController < ApplicationController
     )
   end
 
-  def list_journalist_topics
-    journalist_list = {}
-    journalists = Journalist.all
-    journalists.map do |journalist|
-      journalist_list[journalist.id] = journalist.topic_ids
-    end
-    journalist_list
+  def load_journalist_topics
+    topic_ids = params[:topic_ids]
+    Journalist.joins(:coverage_topics).
+      where(coverage_topics: { topic_id: topic_ids })
   end
 end

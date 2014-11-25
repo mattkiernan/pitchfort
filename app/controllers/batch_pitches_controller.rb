@@ -19,7 +19,7 @@ class BatchPitchesController < ApplicationController
       flash[:error] = pitch_creator.errors.join(" and ")
       @pitch = Pitch.new
       @pitch_topic = PitchTopic.new
-      render :new, flash: flash[:error]
+      render :new
     end
   end
 

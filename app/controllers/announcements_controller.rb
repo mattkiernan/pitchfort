@@ -16,7 +16,7 @@ class AnnouncementsController < ApplicationController
 
   def show
     @announcement = load_announcement_from_url
-    @pitches = @announcement.pitches
+    @pitches = @announcement.pitches.order("created_at DESC")
   end
 
   private

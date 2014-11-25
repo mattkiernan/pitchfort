@@ -3,40 +3,47 @@ $(function(){
     var topicIds = $("input:checked").map(function(index, checkbox){
       return $(checkbox).val();
     }).get();
+
     getJournalistIds(topicIds).done(function(){
       selectedJournalists = arguments[0]
-      console.log(selectedJournalists)
-      display(selectedJournalists);
+      buildFormFields(selectedJournalists);
     });
   });
 
   var getJournalistIds = function(topicIds){
     var options = {
-      $.get{
-        dataType: "json",
-        url: "/journalists",
-        data: { topic_ids: topicIds }
-      };
+      type: "GET",
+      dataType: "json",
+      url: "/journalists",
+      data: { topic_ids: topicIds }
     };
-
     return $.ajax(options);
   };
 
-  var display = function(selectedJournalists){
-    $(".journalist-list").children().remove();
+  var buildFormFields = function(selectedJournalists){
+    $(".journalist-list").empty();
     $(".selected-journalist").attr("class", "unselected-journalist")
       $.each(selectedJournalists, function(index, value){
-        journalistId = value["id"],
-        journalistName = value["first_name"] + " " + value["last_name"],
-        journalistInput(journalistId, journalistName);
+        var journalistId = value["id"]
+        var journalistName = value["first_name"] + " " + value["last_name"]
+        appendToForm(journalistId, journalistName);
       });
   };
 
-  var journalistInput = function(journalistId, journalistName){
-    $(".journalist-list").append(
-            "<input id='pitch_journalist_id_" + journalistId +
-            "' name='pitch[journalist_id][]' type='checkbox' value='" +
-            journalistId + "'><label for='" + "pitch_journalist_id_" +
-            journalistId + "'>" + journalistName + "</label><br>"
-        )};
+  var appendToForm = function(journalistId, journalistName){
+    var checkbox = $("<input />", {
+        id: "pitch_journalist_id_" + journalistId,
+        name: "pitch[journalist_id][]",
+        type: "checkbox",
+        value: journalistId
+    });
+
+    var label = $("<label>", {
+      for: "pitch_journalist_id_" + journalistId,
+    }).text(journalistName);
+
+    $(".journalist-list").append(checkbox)
+    $(".journalist-list").append(label)
+    $(".journalist-list").append($("<br />"))
+  };
 });

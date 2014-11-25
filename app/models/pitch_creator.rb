@@ -1,6 +1,4 @@
 class PitchCreator
-  include ActiveModel::Model
-
   attr_reader :errors
 
   def initialize(announcement, journalists, topics, pitch_params)
