@@ -12,10 +12,11 @@ $(function(){
 
   var getJournalistIds = function(topicIds){
     var options = {
-      type: "GET",
-      dataType: "json",
-      url: "/journalists",
-      data: { topic_ids: topicIds }
+      $.get{
+        dataType: "json",
+        url: "/journalists",
+        data: { topic_ids: topicIds }
+      };
     };
 
     return $.ajax(options);
