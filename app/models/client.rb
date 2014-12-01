@@ -4,4 +4,13 @@ class Client < ActiveRecord::Base
 
   belongs_to :user
   has_many :announcements
+
+  def announcement_count
+    announcements.count
+  end
+
+  def pitches
+    announcement_id = id
+    Pitch.joins(:announcement).where(announcements: {id: announcement_id})
+  end
 end

@@ -1,4 +1,9 @@
 class AnnouncementsController < ApplicationController
+  def index
+    @client = load_client_from_url
+    @announcements = @client.announcements
+  end
+
   def new
     @client = load_client_from_url
     @announcement = @client.announcements.new

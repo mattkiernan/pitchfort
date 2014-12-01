@@ -1,4 +1,10 @@
 class PitchesController < ApplicationController
+  def index
+    announcement = load_announcement_from_url
+    @client = announcement.client_id
+    @pitches = @client.pitches
+  end
+
   def new
     @announcement = load_announcement_from_url
   end

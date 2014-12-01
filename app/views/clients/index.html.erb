@@ -4,8 +4,6 @@
   <%= link_to "Add client", new_client_path %>
 </div>
 
-<div>
-  <ul>
-    <%= render @clients %>
-  </ul>
+<div class="client-table">
+  <%= render "refills/tables_minimal" %>
 </div>
