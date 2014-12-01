@@ -13,7 +13,8 @@ class BatchPitchesController < ApplicationController
       announcement,
       journalists,
       topics,
-      pitch_params
+      pitch_params,
+      current_user
     )
     pitch_creator.create_pitches
 
