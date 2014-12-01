@@ -47,6 +47,6 @@ class PitchCreator
     journalist_email = journalist_email(journalist_id)
     subject = @pitch_params["subject"]
     body = @pitch_params["body"]
-    PitchMailer.test_email(journalist_email, subject, body, @user).deliver
+    PitchMailer.email(journalist_email, subject, body, @user).deliver
   end
 end
