@@ -1,11 +1,12 @@
 class PitchCreator
   attr_reader :errors
 
-  def initialize(announcement, journalists, topics, pitch_params)
+  def initialize(announcement, journalists, topics, pitch_params, user)
     @announcement = announcement
     @journalists = journalists
     @topics = topics
     @pitch_params = pitch_params
+    @user = user
     @errors = []
   end
 
@@ -17,6 +18,7 @@ class PitchCreator
         pitch = @announcement.pitches.create(@pitch_params.
           merge(journalist_id: journalist_id))
         create_pitch_topics(pitch)
+        send_pitch_email(journalist_id)
       end
     end
   end
@@ -35,5 +37,16 @@ class PitchCreator
         PitchTopic.create(pitch_id: pitch.id, topic_id: topic)
       end
     end
+  end
+
+  def journalist_email(journalist_id)
+    Journalist.find(journalist_id).email
+  end
+
+  def send_pitch_email(journalist_id)
+    journalist_email = journalist_email(journalist_id)
+    subject = @pitch_params["subject"]
+    body = @pitch_params["body"]
+    PitchMailer.test_email(journalist_email, subject, body, @user).deliver
   end
 end
