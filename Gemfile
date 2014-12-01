@@ -16,4 +16,4 @@ group :development do
     gem "binding_of_caller"
     gem 'pry'
 end
-gem 'dotenv-rails', :groups => [:development, :test]
+gem 'dotenv-rails', groups: [:development, :test]
