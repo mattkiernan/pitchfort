@@ -2,6 +2,4 @@
 
 <%= link_to "Add new pitch", new_announcement_batch_pitch_path(@announcement) %>
 
-<table>
-  <%= render @pitches, announcement: @announcement %>
-</table>
+<%= render "layouts/pitch_table", table_data: @announcement.pitches %>

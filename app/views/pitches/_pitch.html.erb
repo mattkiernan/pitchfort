@@ -1,10 +1,12 @@
-<tr data-announcement_id="<%= announcement.id %>", data-pitch_id="<%= pitch.id %>">
+<tr>
+  <td><%= pitch.client_name %></td>
+  <td><%= pitch.announcement_name %></td>
   <td><%= pitch.subject %></td>
   <td><%= pitch.datetime %></td>
   <td><%= pitch.journalist.full_name %></td>
   <td><%= abbreviate(pitch.publications, :name) %></td>
   <td>
-    <%= form_for [announcement, pitch] do |form| %>
+    <%= form_for pitch do |form| %>
       <%= form.select(:status, Pitch::STATUSES,{}, {selected: pitch.status, class: "pitch-status"}) %>
     <% end %>
   </td>

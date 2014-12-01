@@ -17,4 +17,12 @@ class Pitch < ActiveRecord::Base
     journalist = Journalist.find(journalist_id)
     journalist.publications
   end
+
+  def client_name
+    announcement.client.name
+  end
+
+  def announcement_name
+    announcement.name
+  end
 end

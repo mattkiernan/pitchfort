@@ -4,4 +4,9 @@ class Client < ActiveRecord::Base
 
   belongs_to :user
   has_many :announcements
+  has_many :pitches, through: :announcements
+
+  def announcement_count
+    announcements.count
+  end
 end

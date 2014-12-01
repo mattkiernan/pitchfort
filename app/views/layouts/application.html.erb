@@ -7,20 +7,19 @@
 <%= csrf_meta_tags %>
 </head>
 <body>
-<div>
-  <% if signed_in? %>
-    <%= link_to "Sign out", session_path, method: :delete %>
-    <%= link_to "Journalists", journalists_path %>
-  <% else %>
-    <%= link_to "Sign in", new_session_path %>
-    <%= link_to "Sign up", new_user_path %>
-  <% end %>
+<div class="app-content">
+  <div>
+    <% if signed_in? %>
+      <%= link_to "Sign out", session_path, method: :delete %>
+      <%= link_to "Journalists", journalists_path %>
+    <% else %>
+      <%= link_to "Sign in", new_session_path %>
+      <%= link_to "Sign up", new_user_path %>
+    <% end %>
+  </div>
+  <div class="page-content">
+    <%= yield %>
+  </div>
 </div>
-<div>
-  <h1><%= link_to "PitchFort", root_path %></h1>
-</div>
-
-<%= yield %>
-
 </body>
 </html>

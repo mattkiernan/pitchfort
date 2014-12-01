@@ -1,10 +1,13 @@
 class PitchesController < ApplicationController
+  def index
+    @pitches = announcement_pitches || client_pitches || current_user.pitches
+  end
+
   def new
     @announcement = load_announcement_from_url
   end
 
   def update
-    @announcment = load_announcement_from_url
     @pitch = load_pitch_from_url
     if @pitch.update(pitch_params)
       respond_to do |format|
@@ -15,6 +18,18 @@ class PitchesController < ApplicationController
   end
 
   private
+
+  def announcement_pitches
+    if params[:announcement_id].present?
+      Pitch.where(announcement_id: params[:announcement_id])
+    end
+  end
+
+  def client_pitches
+    if params[:client_id].present?
+      Client.find(params[:client_id]).pitches
+    end
+  end
 
   def load_announcement_from_url
     Announcement.find(params[:announcement_id])

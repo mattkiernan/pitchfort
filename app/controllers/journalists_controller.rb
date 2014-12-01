@@ -1,7 +1,7 @@
 class JournalistsController < ApplicationController
   def index
-    @journalists = Journalist.all
-    @journalist = Journalist.new
+    @journalists = current_user.journalists
+    @journalist = current_user.journalists.new
     @selected_journalists = load_journalist_topics
     respond_to do |format|
       format.json { render json: @selected_journalists }
@@ -10,7 +10,7 @@ class JournalistsController < ApplicationController
   end
 
   def create
-    @journalist = Journalist.new(journalist_params)
+    @journalist = current_user.journalists.new(journalist_params)
     if @journalist.save
       redirect_to journalists_path
     end
