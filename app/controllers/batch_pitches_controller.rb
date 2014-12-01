@@ -9,13 +9,12 @@ class BatchPitchesController < ApplicationController
     announcement = load_announcement_from_url
     journalists = params[:pitch][:journalist_id]
     topics = params[:pitch][:pitch_topic][:topic_id].reject!(&:blank?)
-    user = current_user
     pitch_creator = PitchCreator.new(
       announcement,
       journalists,
       topics,
       pitch_params,
-      user
+      current_user
     )
     pitch_creator.create_pitches
 
