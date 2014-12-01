@@ -1,10 +1,12 @@
 class PitchMailer < ActionMailer::Base
-  def email(journalist_email, subject, body, user)
-    mail(to: journalist_email,
-         subject: subject,
-         body: body,
-         from: "#{user.full_name} <pitchfort@gmail.com>",
-         reply_to: user.email
-        )
+  def email(journalist, subject, body, user)
+    @journalist_name = journalist.first_name
+    @body = body
+    mail(
+      to: journalist.email,
+      subject: subject,
+      from: "#{user.full_name} <pitchfort@gmail.com>",
+      reply_to: user.email
+    )
   end
 end
