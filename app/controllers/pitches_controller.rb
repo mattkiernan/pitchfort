@@ -20,20 +20,14 @@ class PitchesController < ApplicationController
   private
 
   def announcement_pitches
-    if params[:announcement_id].nil?
-      return false
-    else
-      announcement = Announcement.find(params[:announcement_id])
-      announcement.pitches
+    if params[:announcement_id].present?
+      Pitch.where(announcement_id: params[:announcement_id])
     end
   end
 
   def client_pitches
-    if params[:client_id].nil?
-      return false
-    else
-      client = Client.find(params[:client_id])
-      client.pitches
+    if params[:client_id].present?
+       Client.find(params[:client_id]).pitches
     end
   end
 
