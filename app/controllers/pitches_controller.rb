@@ -27,7 +27,7 @@ class PitchesController < ApplicationController
 
   def client_pitches
     if params[:client_id].present?
-       Client.find(params[:client_id]).pitches
+      Client.find(params[:client_id]).pitches
     end
   end
 

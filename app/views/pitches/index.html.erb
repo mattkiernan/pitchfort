@@ -1,15 +1,3 @@
 <%= link_to "Create a new pitch", new_batch_pitch_path %>
 
-<table>
-  <thead>
-  <tr>
-      <th>Client</th>
-      <th>Announcement</th>
-      <th>Pitch Subject</th>
-      <th>Journalist</th>
-      <th>Publications</th>
-      <th>Status</th>
-  </tr>
-</thead>
-  <%= render @pitches %>
-</table>
+<%= render "layouts/pitch_table", table_data: @pitches %>

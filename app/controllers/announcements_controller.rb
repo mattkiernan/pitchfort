@@ -5,11 +5,10 @@ class AnnouncementsController < ApplicationController
 
   def new
     @announcement = Announcement.new
-    @user = current_user
   end
 
   def create
-    @announcement = Announcement.new(announcement_params)
+    @announcement = current_user.announcements.new(announcement_params)
     if @announcement.save
       redirect_to root_path
     else
@@ -25,11 +24,8 @@ class AnnouncementsController < ApplicationController
   private
 
   def client_announcements
-    if params[:client_id].nil?
-      return false
-    else
-      client = Client.find(params[:client_id])
-      client.announcements
+    if params[:client_id].present?
+      Client.find(params[:client_id]).announcements
     end
   end
 
@@ -44,7 +40,7 @@ class AnnouncementsController < ApplicationController
         :description,
         :datetime,
         :client_id
-    ).merge(user_id: current_user.id)
+    )
   end
 
   def load_announcement_from_url
