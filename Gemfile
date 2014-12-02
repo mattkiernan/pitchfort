@@ -17,7 +17,3 @@ group :development do
     gem 'pry'
 end
 gem 'dotenv-rails', groups: [:development, :test]
-gem 'bourbon'
-gem 'neat'
-gem 'bitter'
-gem 'refills'
