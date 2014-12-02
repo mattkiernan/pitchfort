@@ -1,9 +1,16 @@
 <% if flash[:error] %>
   <%= flash[:error] %>
 <% end %>
-<%= form_for @pitch, url: announcement_batch_pitches_path do |form| %>
+<%= form_for @pitch, url: batch_pitches_path do |form| %>
+  <div>
+  <%= form.collection_select(:announcement_id, @user.announcements, :id, :name) %>
+</div>
+<div>
   <%= form.text_field :subject, :placeholder => "Subject" %>
+</div>
+<div>
   <%= form.text_area :body, placeholder: "Body" %>
+</div>
   <div>
   <%= form.fields_for @pitch_topic do |topic_fields| %>
     <%= render "pitch_topics/form", fields: topic_fields %>

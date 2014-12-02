@@ -1,8 +1,7 @@
 class PitchCreator
   attr_reader :errors
 
-  def initialize(announcement, journalists, topics, pitch_params, user)
-    @announcement = announcement
+  def initialize(journalists, topics, pitch_params, user)
     @journalists = journalists
     @topics = topics
     @pitch_params = pitch_params
@@ -28,8 +27,8 @@ class PitchCreator
   private
 
   def build_pitch(journalist_id)
-    pitch = @announcement.pitches.create(@pitch_params.
-      merge(journalist_id: journalist_id))
+    pitch = Pitch.create(@pitch_params.
+            merge(journalist_id: journalist_id, user_id: @user.id))
     create_pitch_topics(pitch)
   end
 

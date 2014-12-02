@@ -3,5 +3,15 @@
 <%= link_to "Add new pitch", new_announcement_batch_pitch_path(@announcement) %>
 
 <table>
-  <%= render @pitches, announcement: @announcement %>
+  <thead>
+  <tr>
+      <th>Client</th>
+      <th>Announcement</th>
+      <th>Pitch Subject</th>
+      <th>Journalist</th>
+      <th>Publications</th>
+      <th>Status</th>
+  </tr>
+</thead>
+  <%= render @announcement.pitches %>
 </table>

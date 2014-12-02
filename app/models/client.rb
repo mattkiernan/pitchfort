@@ -10,7 +10,6 @@ class Client < ActiveRecord::Base
   end
 
   def pitches
-    announcement_id = id
-    Pitch.joins(:announcement).where(announcements: {id: announcement_id})
+    Pitch.joins(:announcement).where(announcements: {client_id: id})
   end
 end

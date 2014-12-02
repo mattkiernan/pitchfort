@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :clients, only: [:index, :new, :create, :show]
   resources :announcements, only: [:new, :create, :index, :show]
   resources :pitches, only: [:new, :create, :update, :index, :show]
+  resources :batch_pitches, only: [:new, :create, :index]
   resources :journalists, only: [:index, :new, :create, :show]
 
   resources :clients, only: [] do
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :announcements, only: [] do
     resources :pitches
-    resources :batch_pitches, only: [:new, :create, :index]
+    resources :batch_pitches
   end
 
   resources :pitch_topics, only: [:create]
