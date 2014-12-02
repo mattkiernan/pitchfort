@@ -1,4 +1,7 @@
-<%= form_for [client, announcement] do |form| %>
+<%= form_for announcement do |form| %>
+  <div>
+    <%= form.collection_select(:client_id, user.clients, :id, :name) %>
+  </div>
   <div>
     <%= form.text_field :name, :placeholder => "Announcement name" %>
   </div>

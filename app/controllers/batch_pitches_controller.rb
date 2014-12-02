@@ -20,7 +20,6 @@ class BatchPitchesController < ApplicationController
 
     if pitch_creator.successful?
       redirect_to announcement
-      binding.pry
     else
       flash[:error] = pitch_creator.errors.join(" and ")
       @pitch = Pitch.new

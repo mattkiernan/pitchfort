@@ -1,8 +1,9 @@
 class JournalistsController < ApplicationController
   def index
     @journalists = current_user.journalists
-    @journalist = Journalist.new
+    @journalist = current_user.journalists.new
     @selected_journalists = load_journalist_topics
+    @user = current_user
     respond_to do |format|
       format.json { render json: @selected_journalists }
       format.html
@@ -35,7 +36,7 @@ class JournalistsController < ApplicationController
         :phone,
         topic_ids: [],
         publication_ids: []
-    )
+    ).merge(user_id: current_user.id)
   end
 
   def load_journalist_topics

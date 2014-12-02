@@ -1,17 +1,17 @@
 class AnnouncementsController < ApplicationController
   def index
-    @client = Client.find(params[:client_id])
+    @announcements = client_announcements || current_user.announcements
   end
 
   def new
     @announcement = Announcement.new
+    @user = current_user
   end
 
   def create
-    @client = load_client_from_url
-    @announcement = @client.announcements.new(announcement_params)
+    @announcement = Announcement.new(announcement_params)
     if @announcement.save
-      redirect_to @client
+      redirect_to root_path
     else
       render :new
     end
@@ -24,12 +24,21 @@ class AnnouncementsController < ApplicationController
 
   private
 
+  def client_announcements
+    if params[:client_id].nil?
+      return false
+    else
+      client = Client.find(params[:client_id])
+      client.announcements
+    end
+  end
+
   def load_client_from_url
     Client.find(params[:client_id])
   end
 
   def announcement_params
-    params.require(:announcement).permit(:name, :description, :datetime)
+    params.require(:announcement).permit(:name, :description, :datetime, :client_id).merge(user_id: current_user.id)
   end
 
   def load_announcement_from_url

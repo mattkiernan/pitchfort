@@ -8,7 +8,6 @@ class PitchesController < ApplicationController
   end
 
   def update
-    binding.pry
     @pitch = load_pitch_from_url
     if @pitch.update(pitch_params)
       respond_to do |format|
