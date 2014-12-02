@@ -1,8 +1,6 @@
 class PitchesController < ApplicationController
   def index
-    announcement = load_announcement_from_url
-    @client = announcement.client_id
-    @pitches = @client.pitches
+    @pitches = current_user.pitches
   end
 
   def new
@@ -10,7 +8,7 @@ class PitchesController < ApplicationController
   end
 
   def update
-    @announcment = load_announcement_from_url
+    binding.pry
     @pitch = load_pitch_from_url
     if @pitch.update(pitch_params)
       respond_to do |format|

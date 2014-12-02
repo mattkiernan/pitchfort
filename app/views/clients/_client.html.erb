@@ -1,6 +1,5 @@
 <tr>
 <td><%= link_to client.name, client %></td>
 <td><%= link_to pluralize(client.announcement_count, "Announcement"), client_announcements_path(client)  %></td>
-<td><%= link_to pluralize(client.pitches.count, "Pitch"), "clients/pitches" %>
- %></td>
+<td><%= link_to pluralize(client.pitches.count, "Pitches"), client_pitches_path(client)  %></td>
 </tr>

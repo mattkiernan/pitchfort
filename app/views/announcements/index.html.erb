@@ -1,3 +1,5 @@
 <h2><%= @client.name %></h2>
 
-<%= render @announcements %>
+<%= link_to "Create new announcement", new_client_announcement_path(@client.id) %>
+
+<%= render @client.announcements, client: @client  %>
