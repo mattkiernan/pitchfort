@@ -2,7 +2,6 @@ class BatchPitchesController < ApplicationController
   def new
     @pitch = Pitch.new
     @pitch_topic = PitchTopic.new
-    @user = current_user
   end
 
   def create

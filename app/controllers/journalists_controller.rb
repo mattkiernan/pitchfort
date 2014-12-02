@@ -3,7 +3,6 @@ class JournalistsController < ApplicationController
     @journalists = current_user.journalists
     @journalist = current_user.journalists.new
     @selected_journalists = load_journalist_topics
-    @user = current_user
     respond_to do |format|
       format.json { render json: @selected_journalists }
       format.html
@@ -11,7 +10,7 @@ class JournalistsController < ApplicationController
   end
 
   def create
-    @journalist = Journalist.new(journalist_params)
+    @journalist = current_user.journalists.new(journalist_params)
     if @journalist.save
       redirect_to journalists_path
     end
@@ -36,7 +35,7 @@ class JournalistsController < ApplicationController
         :phone,
         topic_ids: [],
         publication_ids: []
-    ).merge(user_id: current_user.id)
+    )
   end
 
   def load_journalist_topics

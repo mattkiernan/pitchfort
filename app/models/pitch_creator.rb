@@ -28,7 +28,7 @@ class PitchCreator
 
   def build_pitch(journalist_id)
     pitch = Pitch.create(@pitch_params.
-            merge(journalist_id: journalist_id, user_id: @user.id))
+                  merge(journalist_id: journalist_id, user_id: @user.id))
     create_pitch_topics(pitch)
   end
 

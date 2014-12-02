@@ -18,9 +18,8 @@ class Pitch < ActiveRecord::Base
     journalist.publications
   end
 
-  def client
-    Client.joins(:announcements).joins(:pitches).
-      where(announcements: { id: announcement_id }).first.name
+  def client_name
+    announcement.client.name
   end
 
   def announcement_name
