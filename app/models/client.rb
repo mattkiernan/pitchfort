@@ -9,8 +9,4 @@ class Client < ActiveRecord::Base
   def announcement_count
     announcements.count
   end
-
-  #def pitches
-  #  Pitch.joins(:announcement).where(announcements: {client_id: id})
-  #end
 end

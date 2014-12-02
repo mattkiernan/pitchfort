@@ -38,7 +38,13 @@ class AnnouncementsController < ApplicationController
   end
 
   def announcement_params
-    params.require(:announcement).permit(:name, :description, :datetime, :client_id).merge(user_id: current_user.id)
+    params.require(:announcement).
+      permit(
+        :name,
+        :description,
+        :datetime,
+        :client_id
+    ).merge(user_id: current_user.id)
   end
 
   def load_announcement_from_url

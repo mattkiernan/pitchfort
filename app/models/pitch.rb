@@ -19,7 +19,7 @@ class Pitch < ActiveRecord::Base
   end
 
   def client
-    client = Client.joins(:announcements).joins(:pitches).first.name
+    Client.joins(:announcements).joins(:pitches).first.name
   end
 
   def announcement_name
