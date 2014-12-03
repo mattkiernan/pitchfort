@@ -2,12 +2,13 @@
   <td><%= pitch.client_name %></td>
   <td><%= pitch.announcement_name %></td>
   <td><%= pitch.subject %></td>
-  <td><%= pitch.datetime %></td>
   <td><%= pitch.journalist.full_name %></td>
   <td><%= abbreviate(pitch.publications, :name) %></td>
   <td>
+    <div class="selection-box">
     <%= form_for pitch do |form| %>
       <%= form.select(:status, Pitch::STATUSES,{}, {selected: pitch.status, class: "pitch-status"}) %>
     <% end %>
+  </div>
   </td>
 </tr>

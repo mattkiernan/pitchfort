@@ -1,0 +1,16 @@
+body {
+  margin: 0px;
+}
+
+#outer-container {
+  @include outer-container;
+  margin-top: 20px;
+}
+
+#inner-container{
+  @include span-columns(12);
+}
+
+.page-content{
+  margin-top: 20px;
+}

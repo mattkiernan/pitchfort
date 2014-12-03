@@ -35,15 +35,17 @@ $(function(){
       id: "pitch_journalist_id_" + journalistId,
       name: "pitch[journalist_id][]",
       type: "checkbox",
+      class: "journalist",
       value: journalistId
     });
 
     var label = $("<label>", {
       for: "pitch_journalist_id_" + journalistId,
+      class: "journalist"
     }).text(journalistName);
 
     $(".journalist-list").append(checkbox)
     $(".journalist-list").append(label)
-    $(".journalist-list").append($("<br />"))
+    $(".journalist-list")
   };
 });

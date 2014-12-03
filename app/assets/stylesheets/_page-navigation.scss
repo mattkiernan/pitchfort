@@ -1,0 +1,87 @@
+.page-navigation:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.page-navigation{
+  background-color: #f2f2f2;
+  box-shadow: 1px 0px 2px #6C7A89;
+}
+
+.page-header:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.page-header{
+  margin-top: 10px;
+}
+
+.page-title{
+  float: left;
+}
+
+.header-button, .header-field{
+  float: right;
+}
+
+.app-name{
+  text-transform: uppercase;
+  font-size: 25px;
+  padding: 0px;
+  margin: 5px 0 0 70px;;
+  float: left;
+}
+
+.page-navigation:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.page-navigation{
+  background-color: #f2f2f2;
+  box-shadow: 1px 0px 2px #6C7A89;
+}
+
+.search-bar{
+  float: right;
+  margin-top: 7px;
+  padding: 0px;
+  input{
+    width: 200px;
+    height: 30px;
+    margin-right: 10px;
+    padding: 5px;
+    float:right;
+  }
+  button{
+    float:right;
+    margin-right: 40px;
+    height: 30px;
+    font-size: 10px;
+  }
+}
+
+.nav-actions{
+  float: right;
+  margin: 10px 30px 0 0;
+}
+
+.button{
+  background-color: #477DCA;
+  text-decoration: none;
+  color: #ffffff;
+  padding: 8px;
+  border-radius: 3px;
+  &:hover{
+    background-color: #2C5999;
+    color: #ffffff;
+  }
+}
+

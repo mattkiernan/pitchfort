@@ -1,0 +1,64 @@
+input.coverage-topics{
+  float:left;
+}
+
+label.coverage-topics{
+}
+
+
+input.journalist{
+  float:left;
+}
+
+label.journalist{
+}
+
+.selection-boxes:after{
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.pitch-topics-list{
+  float: left;
+  border: 1px solid #DADFE1;
+  padding: 10px;
+  width: 49%;
+}
+
+.journalist-list{
+  float: right;
+  border: 1px solid #DADFE1;
+  padding: 10px;
+  width: 49%
+}
+
+.topic-header{
+  float:left;
+  background-color: blue;
+}
+
+.journalist-header{
+  background-color: red;
+  float:right;
+}
+
+.submit-button{
+  margin-top: 40px;
+}
+
+select.pitch-status{
+  margin: 0px;
+  height: 50px;
+}
+
+select.client-list{
+  height: 40px;
+  width: 250px;
+}
+
+.login-form{
+  float: left;
+  width: 400px;
+}

@@ -1,0 +1,15 @@
+<button type="button" class="js-menu-trigger sliding-menu-button">
+  <img src="/fort.png" alt="">
+</button>
+
+<nav class="js-menu sliding-menu-content">
+  <ul>
+    <li><%= link_to "Clients", clients_path %></li>
+    <li><%= link_to "Announcements", announcements_path %></li>
+    <li><%= link_to "Pitches", pitches_path %></li>
+    <li><%= link_to "Journalists", journalists_path %></li>
+    <li><%= link_to "Sign Out", session_path, method: :delete %></li>
+  </ul>
+</nav>
+
+<div class="js-menu-screen menu-screen"></div>

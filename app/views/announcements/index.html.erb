@@ -1,16 +1,20 @@
-<% if @client.present? %>
-  <%= link_to "Create new announcement", new_announcement_path(client_id: @client.id) %>
+<div class="page-header">
+  <h2 class="page-title">Announcements</h2>
+  <% if @client.present? %>
+    <%= button_to "Create new announcement", new_announcement_path(client_id: @client.id), method: :get, class: "header-button" %>
 <% else %>
-  <%= link_to "Create new announcement", new_announcement_path %>
+    <%= button_to "Create new announcement", new_announcement_path, method: :get, class: "header-button" %>
 <% end %>
+</div>
 
-
-<table>
-  <theader>
-  <th>Client</th>
-  <th>Announcement</th>
-  <th>Pitches</th>
-  <th>Acceptance Rate</th>
-  </theader>
-  <%= render @announcements %>
-</table>
+<div class="page-content">
+  <table class="table-minimal">
+    <theader>
+    <th>Client</th>
+    <th>Announcement</th>
+    <th>Pitches</th>
+    <th>Acceptance Rate</th>
+    </theader>
+    <%= render @announcements %>
+  </table>
+</div>

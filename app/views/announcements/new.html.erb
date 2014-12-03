@@ -1,16 +1,21 @@
+<div class="page-header">
+  <div class="page-title">
 <% if @client.present? %>
   <h2>Create new announcement for <%= @client.name %></h2>
 <% else %>
   <h2>Create new announcement</h2>
 <% end %>
+</div>
+<div class="header-field">
 <%= form_for @announcement do |form| %>
   <% if @client.present? %>
     <input type="hidden" value="<%= @client.id %>" name="announcement[client_id]" />
   <% else %>
     <div>
-      <%= form.collection_select(:client_id, @clients, :id, :name) %>
+      <%= form.collection_select(:client_id, @clients, :id, :name, {}, {class:"announcement-list"}) %>
     </div>
   <% end %>
+</div>
   <div>
     <%= form.text_field :name, :placeholder => "Announcement name" %>
   </div>

@@ -1,30 +1,53 @@
-<% if flash[:error] %>
-  <%= flash[:error] %>
-<% end %>
-<% if @announcement.present? %>
-  <h2>Create new pitch for <%= @announcement.name %></h2>
-<% else %>
-  <h2>Create a new pitch</h2>
-<% end %>
-<%= form_for @pitch, url: batch_pitches_path do |form| %>
-  <% if @announcement.present? %>
-    <input type="hidden" value="<%= @announcement.id %>" name="pitch[announcement_id]" />
-  <% else %>
-  <div>
-    <%= form.collection_select(:announcement_id, @announcement_list, :id, :name) %>
-</div>
-<% end %>
-<div>
-  <%= form.text_field :subject, :placeholder => "Subject" %>
-</div>
-<div>
-  <%= form.text_area :body, placeholder: "Body" %>
-</div>
-  <div>
-  <%= form.fields_for @pitch_topic do |topic_fields| %>
-    <%= render "pitch_topics/form", fields: topic_fields %>
+<div class="flash-errors">
+  <% if flash[:error] %>
+    <%= flash[:error] %>
   <% end %>
 </div>
-  <div class="journalist-list"></div>
-  <%= form.submit %>
+
+<div class="page-header">
+  <div class="page-title">
+    <% if @announcement.present? %>
+      <h2>Create new pitch for <%= @announcement.name %></h2>
+    <% else %>
+        <h2>Create a new pitch</h2>
+    <% end %>
+  </div>
+</div>
+
+<%= form_for @pitch, url: batch_pitches_path do |form| %>
+  <div class="header-field">
+    <% if @announcement.present? %>
+      <input type="hidden" value="<%= @announcement.id %>" name="pitch[announcement_id]" />
+    <% else %>
+      <div>
+        <%= form.collection_select(:announcement_id, @announcement_list, :id, :name, {}, {class:"client-list"}) %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.text_field :subject, :placeholder => "Subject" %>
+  </div>
+
+  <div>
+    <%= form.text_area :body, placeholder: "Body" %>
+  </div>
+
+  <div class="selection-boxes">
+    <div class="pitch-topics-list">
+      <%= form.fields_for @pitch_topic do |topic_fields| %>
+        <%= render "pitch_topics/form", fields: topic_fields %>
+      <% end %>
+    </div>
+
+    <div class="journalist-list">
+      <div class="journalist-checkboxes">
+        No topics selected
+      </div>
+    </div>
+  </div>
+
+  <div class="submit-button">
+    <%= form.submit %>
+  </div>
 <% end %>

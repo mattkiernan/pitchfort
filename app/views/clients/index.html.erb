@@ -1,11 +1,17 @@
-<h2>Clients</h2>
-
-<div>
-  <%= link_to "Add client", new_client_path %>
+<div class="page-header">
+  <h2 class="page-title">Clients</h2>
+  <%= button_to "Add client", new_client_path, method: :get,class:"header-button" %>
 </div>
 
-<div class="client-table">
-  <table>
-  <%= render @clients %>
+<div class="page-content">
+  <table class="table-minimal">
+  <thead>
+    <tr>
+      <th>Client</th>
+      <th>Announcements</th>
+      <th>Pitches</th>
+    </tr>
+  </thead>
+    <%= render @clients %>
   </table>
 </div>
