@@ -1,15 +1,17 @@
-<h1>PitchFort</h1>
-
-<%= form_for :session, url: session_path do |form| %>
-  <div>
-    <%= form.label :email %>
-    <%= form.email_field :email %>
+<div class="page-content">
+  <div class="login-form">
+    <%= form_for :session, url: session_path do |form| %>
+      <div>
+      <%= form.label :email %>
+      <%= form.email_field :email %>
+    </div>
+    <div>
+      <%= form.label :password %>
+      <%= form.password_field :password %>
+    </div>
+    <div>
+      <%= form.submit "Sign in" %>
+    </div>
+  <% end %>
   </div>
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-  <div>
-    <%= form.submit "Sign in" %>
-  </div>
-<% end %>
+</div>

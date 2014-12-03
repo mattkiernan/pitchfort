@@ -1,0 +1,16 @@
+<div class="page-navigation">
+  <div class="app-name">
+    Pitchfort
+  </div>
+  <% if signed_in? %>
+    <div class="search-bar">
+      <button>Search</button>
+      <input type="text" name="search" />
+  </div>
+<% else %>
+    <div class="nav-actions">
+      <%= link_to "Sign Up", new_user_path, class:"button" %>
+      <%= link_to "Sign In", new_session_path, class:"button" %>
+  </div>
+<% end %>
+</div>
