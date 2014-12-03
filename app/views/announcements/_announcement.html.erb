@@ -1,5 +1,6 @@
-<li>
-  <%= link_to announcement.name,
-    announcement_path(announcement) %> -
-    <%= announcement.description %>
-</li>
+<tr>
+  <td><%= link_to announcement.client.name, client_path(announcement.client) %></td>
+  <td><%= link_to announcement.name, announcement_path(announcement) %></td>
+  <td><%= link_to pluralize(announcement.pitches_count, "Pitch"), announcement_pitches_path(announcement) %></td>
+  <td><%= announcement.pitch_acceptance_rate %></td>
+</tr>

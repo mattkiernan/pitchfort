@@ -1,3 +1,26 @@
-<h2>Create new announcement</h2>
-
-<%= render"form", announcement: @announcement, user: current_user %>
+<% if @client.present? %>
+  <h2>Create new announcement for <%= @client.name %></h2>
+<% else %>
+  <h2>Create new announcement</h2>
+<% end %>
+<%= form_for @announcement do |form| %>
+  <% if @client.present? %>
+    <input type="hidden" value="<%= @client.id %>" name="announcement[client_id]" />
+  <% else %>
+    <div>
+      <%= form.collection_select(:client_id, @clients, :id, :name) %>
+    </div>
+  <% end %>
+  <div>
+    <%= form.text_field :name, :placeholder => "Announcement name" %>
+  </div>
+  <div>
+    <%= form.text_field :description, :placeholder => "Description" %>
+  </div>
+  <div>
+    <%= form.datetime_select :datetime, ampm: true, seconds: false %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

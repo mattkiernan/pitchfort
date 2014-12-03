@@ -1,10 +1,13 @@
 class AnnouncementsController < ApplicationController
   def index
     @announcements = client_announcements || current_user.announcements
+    @client = load_client
   end
 
   def new
-    @announcement = Announcement.new
+    @announcement = current_user.announcements.new
+    @clients = current_user.clients
+    @client = load_client
   end
 
   def create
@@ -23,14 +26,16 @@ class AnnouncementsController < ApplicationController
 
   private
 
+  def load_client
+    if params[:client_id].present?
+      Client.find(params[:client_id])
+    end
+  end
+
   def client_announcements
     if params[:client_id].present?
       Client.find(params[:client_id]).announcements
     end
-  end
-
-  def load_client_from_url
-    Client.find(params[:client_id])
   end
 
   def announcement_params

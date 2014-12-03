@@ -1,3 +1,8 @@
-<%= link_to "Create a new pitch", new_batch_pitch_path %>
-
-<%= render "layouts/pitch_table", table_data: @pitches %>
+<% if @announcement.present? %>
+  <%= link_to "Create a new pitch", new_batch_pitch_path(announcement_id: @announcement.id) %>
+<% elsif @client.present? %>
+  <%= link_to "Create a new pitch", new_batch_pitch_path(client_id: @client.id) %>
+<% else %>
+  <%= link_to "Create a new pitch", new_batch_pitch_path %>
+<% end %>
+  <%= render "layouts/pitch_table", table_data: @pitches %>

@@ -2,6 +2,8 @@ class BatchPitchesController < ApplicationController
   def new
     @pitch = Pitch.new
     @pitch_topic = PitchTopic.new
+    @announcement = load_announcement
+    @announcement_list = load_client_announcements || current_user.announcements
   end
 
   def create
@@ -25,8 +27,18 @@ class BatchPitchesController < ApplicationController
     end
   end
 
-  def load_announcement_from_url
-    Announcement.find(params[:announcement_id])
+  private
+
+  def load_announcement
+    if params[:announcement_id].present?
+      Announcement.find(params[:announcement_id])
+    end
+  end
+
+  def load_client_announcements
+    if params[:client_id].present?
+      Announcement.where(client_id: params[:client_id])
+    end
   end
 
   def pitch_params

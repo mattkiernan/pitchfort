@@ -1,3 +1,16 @@
-<%= link_to "Create new announcement", new_announcement_path %>
+<% if @client.present? %>
+  <%= link_to "Create new announcement", new_announcement_path(client_id: @client.id) %>
+<% else %>
+  <%= link_to "Create new announcement", new_announcement_path %>
+<% end %>
 
-<%= render @announcements %>
+
+<table>
+  <theader>
+  <th>Client</th>
+  <th>Announcement</th>
+  <th>Pitches</th>
+  <th>Acceptance Rate</th>
+  </theader>
+  <%= render @announcements %>
+</table>
