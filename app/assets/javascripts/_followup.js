@@ -1,14 +1,20 @@
 $(function(){
+  var updateActionLink = function(select) {
+    var $select = $(select);
+    var pitchState = $select.val();
+    var followupButton = $select.parents(".pitch-row").find(".followup-button");
+    if (pitchState === "Accepted" || pitchState === "Declined") {
+      followupButton.hide();
+    } else {
+      followupButton.show();
+    }
+  };
 
-var accepted = $.find(".pitch-status :selected[value='Accepted']")
-var declined = $.find(".pitch-status :selected[value='Declined']")
+  $(".pitch-status").each(function(i, select) {
+    updateActionLink(select);
+  });
 
-
-  $("body").on("change", ".pitch-status", function(){
-    var value = $(this).val();
-    var followUpButton = $(this).parents().eq(3).find(".followup-button")
-    if (value === "Accepted" || value === "Declined"){
-      followUpButton.addClass("hidden");
-    };
+  $("body").on("change", ".pitch-status", function() {
+    updateActionLink(this);
   });
 });
