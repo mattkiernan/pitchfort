@@ -1,19 +1,31 @@
 <%= form_for journalist do |form| %>
-  <div>
-  <%= form.text_field :first_name, :placeholder => "First name" %>
-  <%= form.text_field :last_name, :placeholder => "Last name" %>
-  <%= form.text_field :email, :placeholder => "Email" %>
-  <%= form.text_field :phone, :placeholder => "Phone" %>
+  <div class="form-fields">
+    <%= form.text_field :first_name, :placeholder => "First name" %>
+    <%= form.text_field :last_name, :placeholder => "Last name" %>
+    <%= form.text_field :email, :placeholder => "Email" %>
+    <%= form.text_field :phone, :placeholder => "Phone" %>
+  </div>
+
+  <div class="selection-headers">
+    <div class="topic-header">
+      <h5>Topics</h5>
+    </div>
+
+    <div class="publication-header">
+      <h5>Publications</h5>
+    </div>
+  </div>
+
+<div class="selection-boxes">
+  <div class="topics-list">
+    <%= form.collection_check_boxes(:topic_ids, Topic.all, :id, :name) %>
+  </div>
+  <div class="publication-list">
+    <%= form.collection_check_boxes(:publication_ids, Publication.all, :id, :name) %>
+  </div>
 </div>
-<div>
-  <h4>Select coverage topics</h4>
-  <%= form.collection_check_boxes(:topic_ids, Topic.all, :id, :name) %>
-</div>
-<div>
-  <h4>Select journalist's publications</h4>
-  <%= form.collection_check_boxes(:publication_ids, Publication.all, :id, :name) %>
-</div>
-<div>
-<%= form.submit %>
+<div class="submit-button">
+  <%= form.submit class:"submit-button" %>
 </div>
 <% end %>
+

@@ -1,9 +1,9 @@
 <div class="page-header">
   <h2 class="page-title">Announcements</h2>
   <% if @client.present? %>
-    <%= button_to "Create new announcement", new_announcement_path(client_id: @client.id), method: :get, class: "header-button" %>
+    <%= link_to "Create new announcement", new_announcement_path(client_id: @client.id), method: :get, class: "header-button button" %>
 <% else %>
-    <%= button_to "Create new announcement", new_announcement_path, method: :get, class: "header-button" %>
+    <%= link_to "Create new announcement", new_announcement_path, method: :get, class: "header-button button" %>
 <% end %>
 </div>
 

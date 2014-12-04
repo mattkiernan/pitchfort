@@ -1,8 +1,18 @@
-<h2>Journalists</h2>
-
-<%= render "form", journalist: @journalist %>
-
-<h3>Available Journalists</h3>
-<ul>
-  <%= render @journalists %>
-</ul>
+<div class="page-header">
+  <h2 class="page-title">Available Journalists</h2>
+  <%= link_to "Add Journalist", new_journalist_path, method: :get, class: "header-button button"  %>
+</div>
+<div class="page-content">
+  <table class="table-minimal">
+    <theader>
+    <th>Name</th>
+    <th>Publications</th>
+    <th>Topics</th>
+    <th>Total Pitches</th>
+    <th>Acceptance Rate</th>
+    </theader>
+    <ul>
+      <%= render @journalists %>
+    </ul>
+  </table>
+</div>

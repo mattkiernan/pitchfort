@@ -5,47 +5,51 @@ input.coverage-topics{
 label.coverage-topics{
 }
 
-
 input.journalist{
   float:left;
 }
 
-label.journalist{
+.form{
+  @include span-columns(8);
 }
 
-.selection-boxes:after{
-  content: " ";
-  display: block;
-  height: 0;
-  clear: both;
-}
-
-.pitch-topics-list{
-  float: left;
+.reminder{
+  @include span-columns(4);
   border: 1px solid #DADFE1;
   padding: 10px;
-  width: 49%;
 }
 
-.journalist-list{
-  float: right;
-  border: 1px solid #DADFE1;
-  padding: 10px;
-  width: 49%
+.selection-headers{
 }
 
-.topic-header{
-  float:left;
-  background-color: blue;
-}
-
-.journalist-header{
-  background-color: red;
-  float:right;
+.topic-header, .publication-header, .journalist-header{
+  @include span-columns(4 of 8);
 }
 
 .submit-button{
-  margin-top: 40px;
+  margin-top: 20px;
+}
+
+textarea{
+  height: 300px;
+}
+
+input.submit-button{
+  text-transform: uppercase;
+  width: 100%;
+}
+
+
+.topics-list{
+  @include span-columns(4 of 8);
+  border: 1px solid #DADFE1;
+  padding: 10px;
+}
+
+.journalist-list, .publication-list{
+  @include span-columns(4 of 8);
+  border: 1px solid #DADFE1;
+  padding: 10px;
 }
 
 select.pitch-status{

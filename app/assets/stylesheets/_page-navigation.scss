@@ -10,30 +10,34 @@
   box-shadow: 1px 0px 2px #6C7A89;
 }
 
-.page-header:after {
-  content: " ";
-  display: block;
-  height: 0;
-  clear: both;
-}
-
 .page-header{
-  margin-top: 10px;
+  margin: 20px 0 25px 0;
+  @include span-columns(12);
 }
 
 .page-title{
-  float: left;
+  @include span-columns(6 of 12);
 }
 
-.header-button, .header-field{
+.header-button{
+  @include span-columns(6 of 12);
   float: right;
+}
+
+.header-field{
+  float: right;
+}
+
+.header-name{
+  position: relative;
+  top: 12px;
 }
 
 .app-name{
   text-transform: uppercase;
   font-size: 25px;
   padding: 0px;
-  margin: 5px 0 0 70px;;
+  margin: 5px 0 0 70px;
   float: left;
 }
 
@@ -79,6 +83,7 @@
   color: #ffffff;
   padding: 8px;
   border-radius: 3px;
+  float: right;
   &:hover{
     background-color: #2C5999;
     color: #ffffff;

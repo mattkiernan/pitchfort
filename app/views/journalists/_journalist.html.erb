@@ -1,5 +1,7 @@
-<li><%= journalist.full_name %></li>
-<ul>
-  <li>Publications: <%= abbreviate(journalist.publications, :name) %></li>
-  <li>Topics covered: <%= abbreviate(journalist.topics, :name) %></li>
-</ul>
+<tr>
+  <td><%= journalist.full_name %></td>
+  <td><%= abbreviate(journalist.publications, :name) %></td>
+  <td><%= abbreviate(journalist.topics, :name) %></td>
+  <td><%= journalist.total_pitches %></td>
+  <td><%= journalist.acceptance_rate %></td>
+</tr>

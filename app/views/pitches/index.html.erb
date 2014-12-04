@@ -1,9 +1,9 @@
 <div class="page-header">
   <h2 class="page-title">Pitches</h2>
 <% if @announcement.present? %>
-  <%= button_to "Create a new pitch", new_batch_pitch_path(announcement_id: @announcement.id), method: :get, class: "header-button" %>
+  <%= link_to "Create new pitch", new_batch_pitch_path(announcement_id: @announcement.id), method: :get, class: "header-button" %>
 <% elsif @client.present? %>
-  <%= button_to "Create a new pitch", new_batch_pitch_path(client_id: @client.id), method: :get, class: "header-button" %>
+  <%= link_to "Create new pitch", new_batch_pitch_path(client_id: @client.id), method: :get, class: "header-button" %>
 <% else %>
   <%= button_to "Create a new pitch", new_batch_pitch_path, method: :get, class: "header-button" %>
 <% end %>

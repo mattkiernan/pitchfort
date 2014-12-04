@@ -7,10 +7,15 @@ body {
   margin-top: 20px;
 }
 
-#inner-container{
-  @include span-columns(12);
-}
-
 .page-content{
   margin-top: 20px;
+}
+
+a.home-button{
+  text-decoration: none;
+  color: #333333;
+}
+
+.journalists{
+  @include span-columns(6);
 }
