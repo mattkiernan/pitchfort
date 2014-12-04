@@ -1,7 +1,10 @@
 class JournalistsController < ApplicationController
+  def new
+    @journalist = current_user.journalists.new
+  end
+
   def index
     @journalists = current_user.journalists
-    @journalist = current_user.journalists.new
     @selected_journalists = load_journalist_topics
     respond_to do |format|
       format.json { render json: @selected_journalists }

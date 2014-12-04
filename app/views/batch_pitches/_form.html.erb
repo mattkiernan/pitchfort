@@ -1,21 +1,30 @@
-<% if flash[:error] %>
-  <%= flash[:error] %>
-<% end %>
-<%= form_for pitch, url: batch_pitches_path do |form| %>
-  <div>
-  <%= form.collection_select(:announcement_id, current_user.announcements, :id, :name) %>
-</div>
-<div>
+<div class="form-fields">
   <%= form.text_field :subject, :placeholder => "Subject" %>
-</div>
-<div>
   <%= form.text_area :body, placeholder: "Body" %>
 </div>
-  <div>
-  <%= form.fields_for pitch_topic do |topic_fields| %>
-    <%= render "pitch_topics/form", fields: topic_fields %>
-  <% end %>
+
+<div class="selection-headers">
+  <div class="topic-header">
+    <h5>Topics</h5>
+  </div>
+
+  <div class="journalist-header">
+    <h5>Journalists</h5>
+  </div>
 </div>
-  <div class="journalist-list"></div>
-  <%= form.submit %>
-<% end %>
+
+  <div class="selection-boxes">
+    <div class="topics-list">
+      <%= form.fields_for pitch_topic do |topic_fields| %>
+        <%= render "pitch_topics/form", fields: topic_fields %>
+      <% end %>
+    </div>
+
+    <div class="journalist-list">
+      No topics selected
+    </div>
+  </div>
+
+  <div class="submit-button">
+    <%= form.submit class:"submit-button" %>
+  </div>
