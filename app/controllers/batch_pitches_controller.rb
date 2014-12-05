@@ -9,7 +9,6 @@ class BatchPitchesController < ApplicationController
   def create
     pitch_creator = PitchCreator.new(
       load_journalists,
-      load_topics,
       pitch_params,
       current_user
     )
@@ -22,7 +21,6 @@ class BatchPitchesController < ApplicationController
       redirect_to :back
     end
   end
-
 
   private
 
