@@ -24,7 +24,7 @@ class PitchCreator
 
   def error_message
     if @errors.any?
-      @errors.join(" and ")
+      @errors.to_sentence(words_connector: " and ")
     end
   end
 
