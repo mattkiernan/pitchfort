@@ -16,7 +16,7 @@ class BatchPitchesController < ApplicationController
     pitch_creator.create_pitches
 
     if pitch_creator.successful?
-      redirect_to root_path
+      redirect_to announcement_path(load_pitch[:announcement_id])
     else
       flash[:error] = pitch_creator.error_message
       redirect_to root_path
@@ -31,10 +31,6 @@ class BatchPitchesController < ApplicationController
 
   def load_journalists
     load_pitch[:journalist_id]
-  end
-
-  def load_topics
-    params[:pitch][:pitch_topic][:topic_id].reject!(&:blank?)
   end
 
   def load_topics
