@@ -42,12 +42,8 @@ class PitchCreator
   end
 
   def create_pitch_topics(pitch)
-    if pitch.id.nil?
-      @errors << "A pitch must have a subject & body"
-    else
-      @topics.each do |topic|
-        PitchTopic.create(pitch_id: pitch.id, topic_id: topic)
-      end
+    @topics.each do |topic|
+      PitchTopic.create(pitch_id: pitch.id, topic_id: topic)
     end
   end
 
