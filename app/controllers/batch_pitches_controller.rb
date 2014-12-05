@@ -44,7 +44,7 @@ class BatchPitchesController < ApplicationController
   end
 
   def load_client
-    params[:cliend_id]
+    params[:client_id]
   end
 
   def load_client_announcements
