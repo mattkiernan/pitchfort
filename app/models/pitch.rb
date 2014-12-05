@@ -8,7 +8,6 @@ class Pitch < ActiveRecord::Base
   validates :announcement_id, presence: true
 
   has_many :pitch_topics
-  has_many :pitches, through: :pitch_topic
   has_many :pitch_targets
   belongs_to :journalist
   belongs_to :announcement

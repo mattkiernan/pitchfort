@@ -7,27 +7,35 @@ class BatchPitchesController < ApplicationController
   end
 
   def create
-    journalists = params[:pitch][:journalist_id]
-    topics = params[:pitch][:pitch_topic][:topic_id].reject!(&:blank?)
     pitch_creator = PitchCreator.new(
-      journalists,
-      topics,
+      load_journalists,
+      load_topics,
       pitch_params,
-      current_user
+      current_user,
     )
     pitch_creator.create_pitches
 
     if pitch_creator.successful?
-      redirect_to root_path
+      redirect_to announcement_path(load_pitch[:announcement_id])
     else
-      flash[:error] = pitch_creator.errors.join(" and ")
-      @pitch = Pitch.new
-      @pitch_topic = PitchTopic.new
-      render :new
+      flash[:error] = pitch_creator.error_message
+      redirect_to :back
     end
   end
 
   private
+
+  def load_pitch
+    params[:pitch]
+  end
+
+  def load_journalists
+    load_pitch[:journalist_id]
+  end
+
+  def load_topics
+    load_pitch[:pitch_topic][:topic_id].reject!(&:blank?)
+  end
 
   def load_announcement
     if params[:announcement_id].present?
@@ -35,8 +43,12 @@ class BatchPitchesController < ApplicationController
     end
   end
 
+  def load_client
+    params[:client_id]
+  end
+
   def load_client_announcements
-    if params[:client_id].present?
+    if load_client.present?
       Announcement.where(client_id: params[:client_id])
     end
   end

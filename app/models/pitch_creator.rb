@@ -1,11 +1,10 @@
 class PitchCreator
-  attr_reader :errors
 
   def initialize(journalists, topics, pitch_params, user)
     @journalists = journalists
-    @topics = topics
     @pitch_params = pitch_params
     @user = user
+    @topics = topics
     @errors = []
   end
 
@@ -15,7 +14,6 @@ class PitchCreator
     else
       @journalists.each do |journalist_id|
         build_pitch(journalist_id)
-        send_pitch_email(journalist_id)
       end
     end
   end
@@ -24,26 +22,29 @@ class PitchCreator
     @errors.empty?
   end
 
+  def error_message
+    if @errors.any?
+      @errors.to_sentence(words_connector: " and ")
+    end
+  end
+
   private
 
   def build_pitch(journalist_id)
     pitch = Pitch.create(@pitch_params.
-                  merge(journalist_id: journalist_id, user_id: @user.id))
-    create_pitch_topics(pitch)
-  end
-
-  def create_pitch_topics(pitch)
-    if pitch.id.nil?
-      @errors << "A pitch must have a subject & body"
+                         merge(journalist_id: journalist_id, user_id: @user.id))
+    if pitch.save
+      create_pitch_topics(pitch)
+      send_pitch_email(journalist_id)
     else
-      @topics.each do |topic|
-        PitchTopic.create(pitch_id: pitch.id, topic_id: topic)
-      end
+      @errors << "A pitch must have a subject and body"
     end
   end
 
-  def journalist_email(journalist_id)
-    Journalist.find(journalist_id).email
+  def create_pitch_topics(pitch)
+    @topics.each do |topic|
+      PitchTopic.create(pitch_id: pitch.id, topic_id: topic)
+    end
   end
 
   def send_pitch_email(journalist_id)
