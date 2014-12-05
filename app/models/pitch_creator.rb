@@ -1,8 +1,10 @@
 class PitchCreator
-  def initialize(journalists, pitch_params, user)
+
+  def initialize(journalists, topics, pitch_params, user)
     @journalists = journalists
     @pitch_params = pitch_params
     @user = user
+    @topics = topics
     @errors = []
   end
 
@@ -12,7 +14,6 @@ class PitchCreator
     else
       @journalists.each do |journalist_id|
         build_pitch(journalist_id)
-        send_pitch_email(journalist_id)
       end
     end
   end
@@ -30,10 +31,23 @@ class PitchCreator
   private
 
   def build_pitch(journalist_id)
-    pitch = Pitch.new(@pitch_params.
-                  merge(journalist_id: journalist_id, user_id: @user.id))
-    if ! pitch.save
+    pitch = Pitch.create(@pitch_params.
+                         merge(journalist_id: journalist_id, user_id: @user.id))
+    if pitch.save
+      create_pitch_topics(pitch)
+      send_pitch_email(journalist_id)
+    else
+      @errors << "A pitch must have a subject and body"
+    end
+  end
+
+  def create_pitch_topics(pitch)
+    if pitch.id.nil?
       @errors << "A pitch must have a subject & body"
+    else
+      @topics.each do |topic|
+        PitchTopic.create(pitch_id: pitch.id, topic_id: topic)
+      end
     end
   end
 

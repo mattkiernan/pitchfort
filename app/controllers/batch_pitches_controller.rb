@@ -9,8 +9,9 @@ class BatchPitchesController < ApplicationController
   def create
     pitch_creator = PitchCreator.new(
       load_journalists,
+      load_topics,
       pitch_params,
-      current_user
+      current_user,
     )
     pitch_creator.create_pitches
 
@@ -18,7 +19,7 @@ class BatchPitchesController < ApplicationController
       redirect_to root_path
     else
       flash[:error] = pitch_creator.error_message
-      redirect_to :back
+      redirect_to root_path
     end
   end
 
@@ -30,6 +31,10 @@ class BatchPitchesController < ApplicationController
 
   def load_journalists
     load_pitch[:journalist_id]
+  end
+
+  def load_topics
+    params[:pitch][:pitch_topic][:topic_id].reject!(&:blank?)
   end
 
   def load_topics
