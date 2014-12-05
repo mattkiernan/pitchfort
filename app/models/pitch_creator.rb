@@ -1,6 +1,4 @@
 class PitchCreator
-  attr_reader :errors
-
   def initialize(journalists, topics, pitch_params, user)
     @journalists = journalists
     @topics = topics
@@ -22,6 +20,12 @@ class PitchCreator
 
   def successful?
     @errors.empty?
+  end
+
+  def error_message
+    if @errors.any?
+      @errors.join(" and ")
+    end
   end
 
   private
