@@ -47,10 +47,6 @@ class PitchCreator
     end
   end
 
-  def journalist_email(journalist_id)
-    Journalist.find(journalist_id).email
-  end
-
   def send_pitch_email(journalist_id)
     journalist = Journalist.find(journalist_id)
     subject = @pitch_params["subject"]
