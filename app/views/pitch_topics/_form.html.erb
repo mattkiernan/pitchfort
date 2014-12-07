@@ -1,4 +1,4 @@
-<%= fields.collection_check_boxes(:topic_id, Topic.all, :id, :name) do |b| %>
-  <%= b.check_box(class: "coverage-topics") %>
-  <%= b.label(class: "coverage-topics") %>
+<%= fields.collection_check_boxes(:topic_id, Topic.all, :id, :name) do |fields| %>
+  <%= fields.check_box(class: "coverage-topics") %>
+  <%= fields.label(class: "coverage-topics") %>
 <% end %>

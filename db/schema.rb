@@ -11,19 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202145041) do
+ActiveRecord::Schema.define(version: 20141207215026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "announcements", force: true do |t|
-    t.string   "name",        null: false
+    t.string   "name",              null: false
     t.string   "description"
     t.date     "datetime"
-    t.integer  "client_id",   null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "user_id",     null: false
+    t.integer  "client_id",         null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "user_id",           null: false
+    t.string   "press_release_url"
   end
 
   add_index "announcements", ["client_id"], name: "index_announcements_on_client_id", using: :btree
@@ -65,16 +66,15 @@ ActiveRecord::Schema.define(version: 20141202145041) do
   end
 
   create_table "pitches", force: true do |t|
-    t.string   "subject",                            null: false
-    t.text     "body",                               null: false
-    t.string   "press_release_url"
-    t.string   "status",            default: "Sent", null: false
-    t.integer  "announcement_id",                    null: false
+    t.string   "subject",                          null: false
+    t.text     "body",                             null: false
+    t.string   "status",          default: "Sent", null: false
+    t.integer  "announcement_id",                  null: false
     t.datetime "datetime"
-    t.integer  "journalist_id",                      null: false
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
-    t.integer  "user_id",                            null: false
+    t.integer  "journalist_id",                    null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "user_id",                          null: false
   end
 
   add_index "pitches", ["announcement_id"], name: "index_pitches_on_announcement_id", using: :btree

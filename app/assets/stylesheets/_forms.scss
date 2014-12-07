@@ -2,7 +2,8 @@ input.coverage-topics{
   float:left;
 }
 
-label.coverage-topics{
+input.publications{
+  float:left;
 }
 
 input.journalist{
@@ -13,10 +14,22 @@ input.journalist{
   @include span-columns(8);
 }
 
+form.new_client{
+}
+
 .reminder{
+  @include span-columns(4);
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid #DADFE1;
+}
+
+.reminder-2{
   @include span-columns(4);
   border: 1px solid #DADFE1;
   padding: 10px;
+  background-color: #ffffff;
+  text-align: center;
 }
 
 .selection-headers{
@@ -32,6 +45,7 @@ input.journalist{
 
 textarea{
   height: 300px;
+  background-color: #ffffff;
 }
 
 input.submit-button{
@@ -39,17 +53,18 @@ input.submit-button{
   width: 100%;
 }
 
-
 .topics-list{
   @include span-columns(4 of 8);
   border: 1px solid #DADFE1;
   padding: 10px;
+  background-color: #ffffff;
 }
 
 .journalist-list, .publication-list{
   @include span-columns(4 of 8);
   border: 1px solid #DADFE1;
   padding: 10px;
+  background-color: #ffffff;
 }
 
 select.pitch-status{
@@ -60,9 +75,53 @@ select.pitch-status{
 select.client-list{
   height: 40px;
   width: 250px;
+  background-color: #ffffff;
 }
 
 .login-form{
   float: left;
   width: 400px;
+}
+
+input.client-name{
+  @include span-columns(8 of 12);
+}
+
+input.client-button{
+  margin: 0 0 0 10px;
+}
+
+.hidden{
+  display: none;
+}
+
+.new-client{
+  @include span-columns(12);
+  border: 1px solid #c4c4c4;
+  background-color: #ededed;
+  padding: 30px;
+  margin: 10px 0 30px 0;
+  display: none;
+}
+
+.hide-me{
+  text-align: center;
+}
+
+.reminder-header{
+  margin-bottom: 10px;
+  height: 50px;
+  h4{
+    padding-top: 10px;
+  }
+}
+
+.reminder-image{
+  width: 50px;
+  float: left
+}
+
+.reminder-content{
+  clear: both;
+  padding-left: 20px;
 }

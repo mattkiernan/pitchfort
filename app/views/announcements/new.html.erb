@@ -1,31 +1,39 @@
 <div class="page-header">
   <div class="page-title">
-<% if @client.present? %>
-  <h2>Create new announcement for <%= @client.name %></h2>
-<% else %>
-  <h2>Create new announcement</h2>
-<% end %>
-</div>
-<div class="header-field">
-<%= form_for @announcement do |form| %>
-  <% if @client.present? %>
-    <input type="hidden" value="<%= @client.id %>" name="announcement[client_id]" />
+    <% if @client.present? %>
+      <h2>Create new announcement for <%= @client.name %></h2>
   <% else %>
+      <h2>Create new announcement</h2>
+  <% end %>
+  </div>
+  <%= form_for @announcement do |form| %>
+    <div class="header-field">
+    <% if @client.present? %>
+      <input type="hidden" value="<%= @client.id %>" name="announcement[client_id]" />
+  <% else %>
+      <%= form.collection_select(:client_id, @clients, :id, :name, {}, {class:"client-list"}) %>
+  <% end %>
+  </div>
+</div>
+<div class="page-content">
+  <div class="form">
+    <%= form.text_field :name, placeholder: "Announcement name" %>
+    <%= form.text_field :description, placeholder: "Description" %>
+    <%= form.text_field :press_release_url, placeholder: "Press Release URL" %>
+    <%= form.date_field :datetime, ampm: true, seconds: false, with_css_classes: true, order: [:month, :day, :year] %>
     <div>
-      <%= form.collection_select(:client_id, @clients, :id, :name, {}, {class:"announcement-list"}) %>
+      <%= form.submit class:"submit-button" %>
     </div>
   <% end %>
+  </div>
+  <div class="reminder">
+    <div class="reminder-header">
+      <%= image_tag "/bulb.png", class:"reminder-image" %>
+      <h4>Announcement Tips</h4>
+    </div>
+    <div class="reminder-content">
+      <p>Choose a name that accurately describes the announcement you'll be making
+      for the client.</p>
+    </div>
+  </div>
 </div>
-  <div>
-    <%= form.text_field :name, :placeholder => "Announcement name" %>
-  </div>
-  <div>
-    <%= form.text_field :description, :placeholder => "Description" %>
-  </div>
-  <div>
-    <%= form.datetime_select :datetime, ampm: true, seconds: false %>
-  </div>
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>

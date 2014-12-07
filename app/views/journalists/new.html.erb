@@ -11,10 +11,15 @@
     <%= render "form", journalist: @journalist %>
   </div>
   <div class="reminder">
-    <h4>Adding new journalists</h4>
-    <p>Complete the form below to add new journalists</p>
-    <p>Be sure to include the journalit's correct email address!</p>
-    <p>Have more than one journalist? Click the "upload journalists" button
-    above to import multiple journlaists at once.</p>
+    <div class="reminder-header">
+      <%= image_tag "/bulb.png", class:"reminder-image" %>
+      <h4>Journalist Tips</h4>
+    </div>
+    <div class="reminder-content">
+      <p>Complete the form below to add new journalists</p>
+      <p>Be sure to include the journalit's correct email address!</p>
+      <p>Have more than one journalist? Click the "upload journalists" button
+      above to import multiple journlaists at once.</p>
+    </div>
   </div>
 </div>

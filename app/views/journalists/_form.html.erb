@@ -18,10 +18,10 @@
 
 <div class="selection-boxes">
   <div class="topics-list">
-    <%= form.collection_check_boxes(:topic_ids, Topic.all, :id, :name) %>
+    <%= form.collection_check_boxes(:topic_ids, Topic.all, :id, :name, {}, {class:"coverage-topics"}) %>
   </div>
   <div class="publication-list">
-    <%= form.collection_check_boxes(:publication_ids, Publication.all, :id, :name) %>
+    <%= form.collection_check_boxes(:publication_ids, Publication.all, :id, :name, {}, {class:"publications"}) %>
   </div>
 </div>
 <div class="submit-button">

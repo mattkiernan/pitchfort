@@ -1,6 +1,7 @@
 class ClientsController < ApplicationController
   def index
-    @clients = current_user.clients
+    @clients = load_clients
+    @client = current_user.clients.new
   end
 
   def new
@@ -21,6 +22,10 @@ class ClientsController < ApplicationController
   end
 
   private
+
+  def load_clients
+    current_user.clients.where("id" != nil)
+  end
 
   def client_params
     params.require(:client).permit(:name)
