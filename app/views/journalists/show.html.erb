@@ -7,12 +7,12 @@
 <div class="page-content">
   <table class="table-minimal">
     <theader>
+    <th>Pitch date</th>
     <th>Client</th>
     <th>Announcement</th>
-    <th>Date</th>
-    <th>Pitches</th>
-    <th>Acceptance Rate</th>
+    <th>Pitch subject</th>
+    <th>Pitch status</th>
     </theader>
-    <%= render @pitches %>
+    <%= render partial: "pitch", collection: @pitches %>
   </table>
 </div>
