@@ -21,6 +21,7 @@ class JournalistsController < ApplicationController
 
   def show
     @journalist = load_journalist_from_url
+    @pitches = Pitch.where(journalist_id: @journalist)
   end
 
   private

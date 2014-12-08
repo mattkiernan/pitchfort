@@ -1,5 +1,5 @@
 <tr>
-  <td><%= journalist.full_name %></td>
+  <td><%= link_to journalist.full_name, journalist %></td>
   <td><%= abbreviate(journalist.publications, :name) %></td>
   <td><%= abbreviate(journalist.topics, :name) %></td>
   <td><%= journalist.total_pitches %></td>
