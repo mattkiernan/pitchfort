@@ -1,5 +1,9 @@
 <div class="page-header">
-  <h2 class="page-title">Announcements</h2>
+  <% if @client.present? %>
+         <h2 class="page-title"><%= @client.name %> announcements </h2>
+  <% else %>
+    <h2 class="page-title">Announcements</h2>
+  <% end %>
     <div class="header-button">
       <% if @client.present? %>
         <%= link_to "Create new announcement",

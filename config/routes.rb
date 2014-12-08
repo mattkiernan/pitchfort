@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :index]
-  resources :clients, only: [:index, :new, :create, :show]
+  resources :clients, only: [:index, :new, :create]
   resources :announcements, only: [:new, :create, :index, :show]
   resources :pitches, only: [:new, :create, :update, :index, :show]
   resources :batch_pitches, only: [:new, :create, :index]

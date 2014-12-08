@@ -1,5 +1,5 @@
 <tr>
-  <td><%= link_to announcement.client.name, client_path(announcement.client) %></td>
+  <td><%= announcement.client.name %></td>
   <td><%= link_to announcement.name, announcement_path(announcement) %></td>
   <td><%= link_to announcement.datetime.strftime("%b %d, %Y"), announcement_path(announcement) %></td>
   <td><%= link_to pluralize(announcement.pitches_count, "Pitch"), announcement_pitches_path(announcement) %></td>

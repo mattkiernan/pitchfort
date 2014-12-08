@@ -1,5 +1,5 @@
 <tr>
-  <td><%= link_to pitch.client.name, client_path(pitch.client) %></td>
+  <td><%= pitch.client.name %></td>
   <td><%= link_to pitch.announcement_name, announcement_path(pitch.announcement) %></td>
   <td><%= link_to pitch.subject, pitch_path(pitch) %></td>
   <td><%= link_to pitch.journalist.full_name, journalist_path(pitch.journalist) %></td>
