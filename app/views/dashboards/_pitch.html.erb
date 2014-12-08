@@ -1,0 +1,6 @@
+<tr>
+  <td><%= link_to pitch.updated_at.strftime("%b %d, %Y"), pitch_path(pitch) %></td>
+  <td><%= link_to pitch.subject, pitch_path(pitch) %></td>
+  <td><%= link_to pitch.journalist.full_name, journalist_path(pitch.journalist) %></td>
+  <td><%= link_to pitch.status, pitch_path(pitch) %></td>
+</tr>

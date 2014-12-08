@@ -5,6 +5,12 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def index
+    @announcements = current_user.announcements
+    @pitches = current_user.pitches
+    @journalists = current_user.journalists
+  end
+
   def create
     @user = sign_up(user_params)
 

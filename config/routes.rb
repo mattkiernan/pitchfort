@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  root "clients#index"
+  root "dashboards#show"
 
   resource :session, only: [:new, :create, :destroy]
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :index]
   resources :clients, only: [:index, :new, :create, :show]
   resources :announcements, only: [:new, :create, :index, :show]
   resources :pitches, only: [:new, :create, :update, :index, :show]
@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   end
 
   resources :pitch_topics, only: [:create]
+  resource :dashboard, controller: :dashboards, only: [:show]
 end

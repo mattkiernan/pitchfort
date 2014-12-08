@@ -1,5 +1,13 @@
-<h2><%= @announcement.name %></h2>
+<div class="page-header">
+  <div class="page-title">
+    <h2><%= @announcement.name %></h2>
+  </div>
+  <div class="header-button">
+    <%= link_to "Create new pitch",
+      new_announcement_batch_pitch_path(@announcement), class: "button" %>
+  </div>
+</div>
 
-<%= link_to "Add new pitch", new_announcement_batch_pitch_path(@announcement) %>
-
-<%= render "layouts/pitch_table", table_data: @announcement.pitches %>
+<div class="page-content">
+  <%= render "layouts/pitch_table", table_data: @announcement.pitches %>
+</div>

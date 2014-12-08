@@ -1,8 +1,8 @@
 <tr>
-  <td><%= pitch.client_name %></td>
-  <td><%= pitch.announcement_name %></td>
-  <td><%= pitch.subject %></td>
-  <td><%= pitch.journalist.full_name %></td>
+  <td><%= link_to pitch.client.name, client_path(pitch.client) %></td>
+  <td><%= link_to pitch.announcement_name, announcement_path(pitch.announcement) %></td>
+  <td><%= link_to pitch.subject, pitch_path(pitch) %></td>
+  <td><%= link_to pitch.journalist.full_name, journalist_path(pitch.journalist) %></td>
   <td><%= abbreviate(pitch.publications, :name) %></td>
   <td>
     <div class="selection-box">

@@ -18,8 +18,8 @@ class Pitch < ActiveRecord::Base
     journalist.publications
   end
 
-  def client_name
-    announcement.client.name
+  def client
+    announcement.client
   end
 
   def announcement_name

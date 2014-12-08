@@ -1,0 +1,49 @@
+<div class="page-header">
+  <h2 class="page-title">Dashboard</h2>
+  <div class="header-button">
+  </div>
+</div>
+
+<div class="dashboard-announcements">
+  <table class="table-minimal">
+    <theader>
+    <th>Client</th>
+    <th>Announcement</th>
+    <th>Date</th>
+    <th>Pitches</th>
+    <th>Acceptance Rate</th>
+    </theader>
+    <%= render @announcements %>
+  </table>
+</div>
+<div class="dashboard-headers">
+  <div class="dashboard-pitches-header">
+    <h4>Latest pitch updates</h4>
+  </div>
+  <div class="dashboard-journalists-header">
+    <h4>Top journalists</h4>
+  </div>
+</div>
+<div class="dashboard-content">
+  <div class="dashboard-pitches">
+  <table class="table-minimal">
+    <theader>
+    <th>Pitch</th>
+    <th>Date updated</th>
+    <th>Journalist</th>
+    <th>Status</th>
+    </theader>
+    <%= render collection: @pitches, partial: "pitch" %>
+  </table>
+  </div>
+  <div class="dashboard-journalists">
+  <table class="table-minimal">
+    <theader>
+    <th>Journalist</th>
+    <th>Pitch count</th>
+    <th>Acceptance rate</th>
+    </theader>
+    <%= render collection: @journalists, partial: "journalist" %>
+  </table>
+  </div>
+</div>

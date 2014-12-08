@@ -4,7 +4,7 @@
     <% if @announcement.present? %>
       <%= link_to "Create new pitch",
         new_batch_pitch_path(announcement_id: @announcement.id),
-        method: :get, class: "header-button" %>
+        class: "button" %>
     <% elsif @client.present? %>
           <%= link_to "Create new pitch",
             new_batch_pitch_path(client_id: @client.id), method: :get,
