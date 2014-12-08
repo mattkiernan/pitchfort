@@ -1,4 +1,4 @@
-<tr>
+<tr class="pitch-row">
   <td><%= pitch.client.name %></td>
   <td><%= link_to pitch.announcement_name, announcement_path(pitch.announcement) %></td>
   <td><%= link_to pitch.subject, pitch_path(pitch) %></td>
@@ -11,4 +11,5 @@
     <% end %>
   </div>
   </td>
+  <td><%= link_to "Send follow-up", new_batch_pitch_path, class:"followup-button" %></td>
 </tr>
