@@ -1,9 +1,9 @@
-<div class="form">
+<div class="client-form">
   <%= form_for client do |form| %>
     <%= form.text_field :name, :placeholder => "Client name", class:"client-name" %>
   <%= form.submit class:"client-button" %>
 <% end %>
 </div>
-<div class="reminder-2">
+<div class="client-reminder">
   <%= link_to "Hide this form from view", "#", class:"hide-me" %>
 </div>

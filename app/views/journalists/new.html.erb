@@ -3,10 +3,27 @@
     <h2>Add New Journalist</h2>
   </div>
   <div class="header-button">
-    <%= link_to "Import Journalists", new_journalist_path, class:"button" %>
+    <%= link_to "Import Journalists", new_journalist_path,
+      class:"button import-journalists-button" %>
   </div>
 </div>
 <div class="page-content">
+  <div class="import-journalists">
+    <div class="journalist-form">
+      <%= form_tag imports_path, multipart: true do %>
+        <%= file_field_tag :file %>
+        <%= submit_tag "Import CSV" %>
+      <% end %>
+    </div>
+    <div class="journalist-reminder">
+      <p>Import a CSV containing multiple journalists using the form below.</p>
+      <p>You must use specific headers for the form to save properly.
+      <%= link_to "Click here to download a usable template.",
+      "/template.csv" %></p>
+      <p>Publications and topics should be comma separated.</p>
+      <%= link_to "Hide this form from view", "#", class: "hide-me" %>
+    </div>
+  </div>
   <div class="form">
     <%= render "form", journalist: @journalist %>
   </div>

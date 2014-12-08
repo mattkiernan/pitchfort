@@ -21,4 +21,6 @@ Rails.application.routes.draw do
 
   resources :pitch_topics, only: [:create]
   resource :dashboard, controller: :dashboards, only: [:show]
+
+  resources :imports, only: [:create, :import]
 end

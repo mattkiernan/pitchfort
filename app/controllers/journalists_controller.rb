@@ -4,6 +4,7 @@ class JournalistsController < ApplicationController
   end
 
   def index
+    @journalist = Journalist.new
     @journalists = current_user.journalists
     @selected_journalists = load_journalist_topics
     respond_to do |format|
