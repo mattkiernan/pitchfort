@@ -4,25 +4,45 @@
 <% end %>
 </div>
 
+<%= form_for @pitch, url: batch_pitches_path do |form| %>
 <div class="page-header">
   <div class="page-title">
     <h2>Create a new pitch</h2>
   </div>
 
-  <%= form_for @pitch, url: batch_pitches_path do |form| %>
-    <div class="header-field">
-      <% if @announcement.present? %>
-        <h5><span class="header-name"><%= @announcement.name %></span></h5>
-        <input type="hidden" value="<%= @announcement.id %>" name="pitch[announcement_id]" />
-      <% else %>
-          <%= form.collection_select(:announcement_id, @announcement_list, :id, :name, {}, {class:"client-list"}) %>
-      <% end %>
-    </div>
+  <div class="header-field">
+  <% if @announcement.present? %>
+    <h5><span class="header-name"><%= @announcement.name %></span></h5>
+    <input type="hidden" value="<%= @announcement.id %>" name="pitch[announcement_id]" />
+<% else %>
+    <div>
+    <%= form.collection_select(:announcement_id, @announcement_list, :id, :name, {}, {class:"client-list"}) %>
+  <% end %>
+  </div>
+</div>
 </div>
 
 <div class="page-content">
   <div class="form">
-    <%= render "form", pitch_topic: @pitch_topic, form: form %>
+    <div class="form-fields">
+      <%= form.text_field :subject, :placeholder => "Subject" %>
+      <%= form.text_area :body, placeholder: "Body" %>
+    </div>
+
+    <div class="selection-boxes">
+      <div class="topics-list">
+        <%= form.fields_for @pitch_topic do |topic_fields| %>
+          <%= render "pitch_topics/form", fields: topic_fields %>
+      <% end %>
+      </div>
+
+      <div class="journalist-list">
+        No topics selected
+      </div>
+    </div>
+    <div class="submit-button">
+      <%= form.submit class:"submit-button" %>
+    </div>
   <% end %>
   </div>
   <div class="reminder">
@@ -39,4 +59,4 @@
       journalists.</p>
     </div>
   </div>
-</div>
+  </div>

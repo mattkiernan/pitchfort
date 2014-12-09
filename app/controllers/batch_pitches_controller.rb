@@ -9,6 +9,7 @@ class BatchPitchesController < ApplicationController
   def create
     journalists = params[:pitch][:journalist_id]
     topics = params[:pitch][:pitch_topic][:topic_id].reject!(&:blank?)
+    binding.pry
     pitch_creator = PitchCreator.new(
       journalists,
       topics,
