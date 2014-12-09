@@ -9,12 +9,12 @@ class BatchPitchesController < ApplicationController
   def create
     journalists = params[:pitch][:journalist_id]
     topics = params[:pitch][:pitch_topic][:topic_id].reject!(&:blank?)
-    binding.pry
     pitch_creator = PitchCreator.new(
       journalists,
       topics,
       pitch_params,
-      current_user
+      current_user,
+      session
     )
     pitch_creator.create_pitches
 
@@ -23,6 +23,8 @@ class BatchPitchesController < ApplicationController
     else
       flash[:error] = pitch_creator.errors.join(" and ")
       @pitch = Pitch.new
+      @announcement = load_announcement
+      @announcement_list = load_client_announcements || current_user.announcements
       @pitch_topic = PitchTopic.new
       render :new
     end

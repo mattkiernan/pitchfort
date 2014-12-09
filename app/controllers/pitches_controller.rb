@@ -5,6 +5,14 @@ class PitchesController < ApplicationController
     @announcement = load_announcement_from_url
   end
 
+  def show
+    @pitch = load_pitch_from_url
+    @journalist = @pitch.journalist
+    gmail = Gmail.new(current_user, session[:token], @journalist, @pitch)
+    @results = gmail.fetch_email
+    @announcement = @pitch.announcement
+  end
+
   def new
     @announcement = load_announcement_from_url
   end

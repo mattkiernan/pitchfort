@@ -5,14 +5,26 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = authenticate_session(session_params)
-
-    if sign_in(user)
+    auth_request = request.env["omniauth.auth"]
+    if auth_request.present?
+      user = User.from_omniauth(auth_request)
+      session[:user_id] = user.id
+      session[:token] = auth_request["credentials"]["token"]
+      sign_in(user)
       redirect_to root_path
     else
-      render :new
+      user = authenticate_session(session_params)
+      sign_in_with(user)
     end
   end
+
+ def sign_in_with(user)
+   if sign_in(user)
+     redirect_to root_path
+   else
+     render :new
+   end
+ end
 
   def destroy
     sign_out

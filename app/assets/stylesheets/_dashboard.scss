@@ -1,4 +1,5 @@
 .dashboard-pitches-header,
+.header-content-box,
 .dashboard-journalists-header{
   @include span-columns(6);
   margin-top: 30px;
@@ -6,6 +7,7 @@
 }
 
 .dashboard-pitches,
+.content-box-half,
 .dashboard-journalists{
   @include span-columns(6);
   background-color: #ffffff;
@@ -13,10 +15,20 @@
   padding: 10px;
 }
 
+.content-box-full,
 .dashboard-announcements{
   @include span-columns(12);
   background-color: #ffffff;
   border: 1px solid #DADFE1;
   padding: 10px;
   margin-top: 10px;
+}
+
+.header-content-box{
+  @include span-columns(6);
+  margin-top: 30px;
+  h5{
+    margin:0px;
+    padding: 0px;
+  }
 }

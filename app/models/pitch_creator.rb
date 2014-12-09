@@ -1,12 +1,13 @@
 class PitchCreator
   attr_reader :errors
 
-  def initialize(journalists, topics, pitch_params, user)
+  def initialize(journalists, topics, pitch_params, user, session)
     @journalists = journalists
     @topics = topics
     @pitch_params = pitch_params
     @user = user
     @errors = []
+    @session = session["token"]
   end
 
   def create_pitches

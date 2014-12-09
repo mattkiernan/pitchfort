@@ -1,1 +1,36 @@
-hi
+<h3><em><%= @announcement.name %></em> pitch to <%= @journalist.full_name %></h3>
+<div class="content-box-full">
+<table>
+  <thead>
+    <th>Subject</th>
+    <th>Date</th>
+    <th>Pitch</th>
+  </thead>
+  <tr>
+    <td><%= @pitch.subject %></td>
+    <td><%= @pitch.created_at %></td>
+    <td><%= @pitch.body %></td>
+  </tr>
+</table>
+</div>
+<div class="header-content-box">
+  <h5>Replies from <%= @journalist.full_name %> </h5>
+</div>
+  <div class="content-box-full">
+  <% if @results.present? %>
+  <table class="table-minimal">
+    <thead>
+      <th>Date of reply</th>
+      <th>Reply message</th>
+    </thead>
+    <% @results.each do |result| %>
+      <tr>
+        <td><%= result[:date] %></td>
+        <td><%= result[:message] %></td>
+    </tr>
+  <% end %>
+  </table>
+<% else %>
+    <h4>No replies yet</h4>
+<% end %>
+</div>
