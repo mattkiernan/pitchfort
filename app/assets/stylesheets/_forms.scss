@@ -89,11 +89,6 @@ select.client-list {
   background-color: #ffffff;
 }
 
-.login-form {
-  float: left;
-  width: 400px;
-}
-
 input.client-name {
   @include span-columns(8 of 12);
 }

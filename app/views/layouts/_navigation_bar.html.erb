@@ -1,7 +1,19 @@
+<% if signed_in? %>
 <div class="navigation-bar">
   <div class="navigation-content">
   <div class="app-name">
     <%= link_to "Pitchfort", root_path, class:"home-button" %>
+  </div>
+    <div class="nav-actions">
+      Signed-in as <%= current_user.full_name %>
+  </div>
+</div>
+</div>
+<% else %>
+<div class="navigation-bar logged-out">
+  <div class="navigation-content logged-out">
+  <div class="app-name">
+    <%= link_to "Pitchfort", new_user_path, class:"logo" %>
   </div>
   <% if signed_in? %>
     <div class="search-bar">
@@ -10,11 +22,8 @@
   </div>
 <% else %>
     <div class="nav-actions">
-      <%= link_to "Sign Up", new_user_path, class:"button" %>
-      <%= link_to "Sign In", new_session_path, class:"button" %>
-      <%= link_to "Login with Google", '/auth/google_oauth2',
-        class:"button" %>
   </div>
 <% end %>
 </div>
 </div>
+<% end %>

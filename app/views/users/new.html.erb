@@ -1,35 +1,40 @@
 <div class="page-content">
+  <div class="login-message">
+    <h1 class="signup-header">Everything in one place.</h1>
+    <p>PitchFort is a CRM specifically built for PR professionals.</p>
+    <p>Organize clients, journalists and announcements from one easy-to-use dashboard.</p>
+    <p>Send pitches to journalists and track their responses.</p>
+    <p>Get started today for free.</p>
+  </div>
   <div class="login-form">
-  <%= form_for @user do |form| %>
+    <div class="google-signup">
+      <%= link_to "Login with Google", '/auth/google_oauth2', class: "google-button" %>
+      <div class="email-option">
+        <p> - or -<p>
+        <p><%= link_to "sign-up with email", new_user_path, class:"show-email-signup" %> |
+        <%= link_to "sign-in with email", new_session_path, class:"show-email-signin" %></p>
+    </div>
+    </div>
+    <div class="email-signup">
+      <%= form_for @user do |form| %>
 
-    <% if @user.errors.any? %>
-    <%= pluralize(@user.errors.count, "error") %> prevented your account from being created:
-  <ul>
-    <% @user.errors.full_messages.each do |error_message| %>
-      <li><%= error_message %></li>
-  <% end %>
-  </ul>
-<% end %>
-
-  <div>
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name%>
+        <% if @user.errors.any? %>
+        <%= pluralize(@user.errors.count, "error") %> prevented your account from being created:
+      <ul>
+        <% @user.errors.full_messages.each do |error_message| %>
+          <li><%= error_message %></li>
+      <% end %>
+      </ul>
+    <% end %>
+      <%= form.text_field :first_name, placeholder: "First Name" %>
+      <%= form.text_field :last_name, placeholder: "Last Name" %>
+      <%= form.text_field :email, placeholder: "Email" %>
+      <%= form.password_field :password, placeholder: "Password" %>
+      <%= form.submit "Sign up" %>
+    <% end %>
+    </div>
+    <div class="email-signin">
+      <%= render "sessions/form" %>
+    </div>
   </div>
-  <div>
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
-  </div>
-  <div>
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-  <div>
-    <%= form.submit "Sign up" %>
-  </div>
-<% end %>
-</div>
 </div>
