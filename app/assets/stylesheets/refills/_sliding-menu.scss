@@ -16,7 +16,10 @@ $sliding-menu-color-hover: #fff;
   top: 2px;
   left: 15px;
   outline: none;
-
+  &:hover{
+    background-color: #2c5999;
+    border-radius: 50px;
+  }
   img {
     height: 1.3em;
   }
