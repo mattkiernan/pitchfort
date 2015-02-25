@@ -1,0 +1,5 @@
+#side-bar{
+  @include span-columns(1 of 12);
+  background-color: gray;
+  min-height: 800px;
+}
